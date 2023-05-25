@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Back : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class Back : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+        if (Input.GetMouseButtonDown(0))
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
     }
 }
