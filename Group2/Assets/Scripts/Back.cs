@@ -16,11 +16,11 @@ public class Back : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("awata");
         }
         if (Input.GetMouseButtonDown(0))
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("awata");
         }
     }
 }
