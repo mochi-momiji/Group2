@@ -23,12 +23,14 @@ public class HandMoveR : MonoBehaviour
 
     void handmove()
     {
+        //手の移動量成分
         float speedX = 0.005f;
         float speedY = 0.005f;
-        //経過時間のカウント
-        timer += Time.deltaTime;
 
-        //4秒間のループ
+        //ゲーム進捗度の取得
+        timer = PlayerPrefs.GetFloat("GameTime", 0.0f);
+
+        //0～3のループ
         float t = timer % 4;
 
         if (t < 1.0f || t > 3.0f)//2秒経過するまで上移動

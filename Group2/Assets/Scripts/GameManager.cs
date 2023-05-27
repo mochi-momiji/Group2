@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    float timer;
+     float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +17,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //経過時間のカウント
-        timer += Time.deltaTime;
+        if (Input.GetKey(KeyCode.W))
+        {
+            //ゲーム進捗時間のカウント
+            timer += Time.deltaTime;
+
+            //ゲーム進捗の保存
+            PlayerPrefs.SetFloat("GameTime", timer);
+            PlayerPrefs.Save();
+        }
 
         //ESCキーでポーズ画面に移動
         if(Input.GetKeyDown(KeyCode.Escape))
@@ -27,5 +35,6 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.Save();
             SceneManager.LoadScene("mon.Pause");
         }
+        Debug.Log(timer);
     }
 }
