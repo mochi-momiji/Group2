@@ -6,7 +6,6 @@ public class HandMoveL : MonoBehaviour
 {
     float timer = 0.0f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +23,12 @@ public class HandMoveL : MonoBehaviour
 
     void handmove()
     {
+        //手の移動量成分
         float speedX = 0.005f;
         float speedY = 0.005f;
-        //経過時間のカウント
-        timer += Time.deltaTime;
+
+        //ゲーム進捗度の取得
+        timer = PlayerPrefs.GetFloat("GameTime", 0.0f);
 
         //4秒間のループ
         float t = timer % 4;
