@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
             //ƒQ[ƒ€i’»“x‚Ì•Û‘¶
             PlayerPrefs.SetFloat("GameTime", timer);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("mon.Pause");
+            SceneManager.LoadScene("mon.Pause22");
         }
         Debug.Log(timer);
 

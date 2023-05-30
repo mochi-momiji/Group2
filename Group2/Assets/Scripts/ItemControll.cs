@@ -12,6 +12,8 @@ public class ItemControll : MonoBehaviour
     float timer = 0.0f;
 
     int count = 0;
+    int c = 0;
+
     // Start is called before the first frame update
     void Start()
     {
