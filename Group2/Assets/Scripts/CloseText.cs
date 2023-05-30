@@ -22,7 +22,8 @@ public class CloseText : MonoBehaviour
         }
         if(Input.GetMouseButton(0)||c==1)
         {
-           
+            itemtextPanel.SetActive(false);
+            c = 0;
         }
     }
 }

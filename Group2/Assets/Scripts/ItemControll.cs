@@ -28,19 +28,26 @@ public class ItemControll : MonoBehaviour
 
         if(timer > 5.0f && count < 1) 
         {
+            //アイテムの出現
             transform.position = new Vector3(0.0f, -2.0f, 0.0f);
             count++;
         }
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0)||c==0)
         {
-            transform.position=new Vector3(-11.0f,4.0f,0.0f);
-
+            //テキストを閉じるボタンとして表示
+            transform.position=new Vector3(430.0f,-170.0f,-1.0f);
+            //テキストを表示
             itemtextPanel.SetActive(true);
+            c++;
         }
-        if (Input.GetMouseButton(1))
+        if (Input.GetMouseButton(0)||c==1)
         {
+            //アイテム欄に表示
+            transform.position = new Vector3(-11.0f, 4.0f, 0.0f);
+            //テキストを非表示
             itemtextPanel.SetActive(false );
+            c = 0;
         }
     }
 }
