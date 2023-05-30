@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Delete)) 
         {
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("GameTime");
         }
     }
 }
