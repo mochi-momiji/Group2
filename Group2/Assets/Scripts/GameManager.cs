@@ -36,5 +36,10 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene("mon.Pause");
         }
         Debug.Log(timer);
+
+        if(Input.GetKey(KeyCode.Delete)) 
+        {
+            PlayerPrefs.DeleteAll();
+        }
     }
 }
