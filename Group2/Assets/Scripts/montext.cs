@@ -1,6 +1,7 @@
 
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class montext : MonoBehaviour
 {
@@ -54,5 +55,11 @@ public class montext : MonoBehaviour
         yield return null;
 
         textbox.text = "¡‚Í–Y‚ê‚ÄA‘Ì’²‚Ì‰ñ•œ‚É“w‚ß‚é‚Æ‚µ‚æ‚¤c";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        SceneManager.LoadScene("mon.clear");
+
+
     }
 }
