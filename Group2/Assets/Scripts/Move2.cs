@@ -8,7 +8,7 @@ public class Move2 : MonoBehaviour
     float timer = 0.0f;
     int count = 0;
     int pattern = 0;
-    float[] px = { 0.0f, 26.0f, 52.0f, 78.0f };
+    float[] px = { 0.0f, 20.0f, 40.0f, 60.0f };
     float[] py = { 0.0f, 0.0f, 0.0f, 0.0f };
     float z = -10.0f;
     // Start is called before the first frame update
