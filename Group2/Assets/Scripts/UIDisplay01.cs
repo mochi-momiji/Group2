@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Text.RegularExpressions;
+using TMPro;
 
 
-public class UIDisplay : MonoBehaviour
+public class UIDisplay01 : MonoBehaviour
 {
+    public GameObject textObject ;
     //TextUI
-    private Text turtorial;
-    //表示するText
+    private TextMeshPro turtorial;
+    //表示するメッセージ
     [SerializeField]
     [TextArea(1, 20)]//最低1行で表示を20行にし、余剰分をスクロールで表示
     private string allMessage = "チュートリアル\n"
         + "Wキー長押し：前進\n"
-        + "Escapeキー：ポーズ画面\n<>";
+        + "Escapeキー：ポーズ画面\n<>"
+        + "道中、ナニカが落ちていることがあり、\n"
+        + "アイテムをクリックすることで拾うことができます。\n<>";
+
     //使用する文章分割記号
     [SerializeField]
     private string splitString = "<>";
@@ -47,7 +52,7 @@ public class UIDisplay : MonoBehaviour
         clickIcon = transform.Find("Panel/Imege").GetComponent<Image>();
         clickIcon.enabled = false;
         //TextUIを取得
-        turtorial=GetComponentInChildren<Text>();
+        turtorial=GetComponentInChildren<TextMeshPro>();
         turtorial.text = "";
         //会話内容のリセット
         SetMessage(allMessage);
