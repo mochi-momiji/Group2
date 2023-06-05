@@ -390,55 +390,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1014562635
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1014562637}
-  - component: {fileID: 1014562636}
-  m_Layer: 0
-  m_Name: textController
-  m_TagString: GameController
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1014562636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014562635}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e51353e79487fe49adb09f168e1d0a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scenarios:
-  - "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB"
-  - 
-  - 
-  niText: {fileID: 0}
---- !u!4 &1014562637
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014562635}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 34.658165, y: -4.218188, z: -10.087347}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1035756523
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,8 +511,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: tutorial
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 6f152f6754e376240beec4cbf922fb90, type: 2}
-  m_sharedMaterial: {fileID: 2354567573378384941, guid: 6f152f6754e376240beec4cbf922fb90, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 868ea85e20635b04ba517a5325266b85, type: 2}
+  m_sharedMaterial: {fileID: 9071101054999402297, guid: 868ea85e20635b04ba517a5325266b85, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1019,13 +970,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417527578}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0e51353e79487fe49adb09f168e1d0a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scenarios: []
-  niText: {fileID: 0}
+  Scenarios: {fileID: 1079965523}
+  ScenariosPanel: {fileID: 1617343461}
+  Screen: {fileID: 1647250983}
 --- !u!1 &1496189490
 GameObject:
   m_ObjectHideFlags: 0

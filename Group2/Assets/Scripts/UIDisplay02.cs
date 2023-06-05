@@ -1,45 +1,60 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIDisplay02 : MonoBehaviour
 {
-    //シナリオを格納
-    public string[] scenarios;
-    //niTextへの参照を保つ
-    [SerializeField] TextMeshPro niText;
+    [SerializeField] TMP_Text Scenarios;
+    [SerializeField] GameObject ScenariosPanel;
+    [SerializeField] GameObject Screen;
 
-    //現在の行数
-    int currentLine = 0;
-
+    int screen_x_num = 0;
+    int screen_y_num = 0;
     
+
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        TextUpdate();
+        Debug.Log("開始");
+        Scenarios.text = "操作説明\n" 
+                       + "Wキー:前進\n" 
+                       + "Escapeキー:ポーズ画面" ;
+        yield return new WaitUntil(()=>Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "道中、アイテムが落ちていることがあり、"
+                       + "アイテムをクリックすることで取得できる。";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //現在の行数がラストmwで行ってない状態でクリックすると、テキスト更新
-        if(currentLine < scenarios.Length && Input.GetMouseButton(0))
-        {
-            TextUpdate();
-        }
+        screen_x_num = PlayerPrefs.GetInt("IndexX", 0);
+        screen_y_num =PlayerPrefs.GetInt("IndexY", 0);
 
+        if (screen_x_num== 0 && screen_y_num == 1)
+        {
+            Debug.Log("iii");
+            Screen.SetActive(true);
+            Senario1();
+        }
     }
 
     //テキストを更新
-    void TextUpdate()
+    IEnumerator Senario1()
     {
-        //現在の行のテキストをniTextに流し込み、現在の行番号を一つ追加する
-        niText.text = scenarios[currentLine];
-        currentLine++;
+        Debug.Log("イベント開始");
+
+            Scenarios.text = "主人公\n"
+                       + "セリフ１\n"
+                       + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
     }
 }

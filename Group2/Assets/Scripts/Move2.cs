@@ -6,10 +6,10 @@ using UnityEngine;
 public class Move2 : MonoBehaviour
 {
     float timer = 0.0f;
-    int count = 0;
-    int pattern = 0;
+    int Xcount = 0;
+    int Ycount = 0;
     int[] px = { 0, 20, 40, 60 };
-    int[] py = { 0, 20, 0, 0 };
+    int[] py = { 0, -20, -40, -60 };
     float z = -10.0f;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,11 @@ public class Move2 : MonoBehaviour
         if(Input.GetKey(KeyCode.W)) 
         {
             MovePattern1();
-            MovePattern2();
+        }
+
+        if(Input.GetKey(KeyCode.Delete)) 
+        {
+            PlayerPrefs.DeleteAll();
         }
     }
 
@@ -33,23 +37,25 @@ public class Move2 : MonoBehaviour
         Debug.Log(timer);
         if (timer > 1.0f) 
         {
-            count++;
-            Debug.Log(count);
-            transform.position=new Vector3(px[count%4], py[pattern%4],z);
+            Xcount++;
+            CountReset();
+            transform.position=new Vector3(px[Xcount], py[Ycount],z);
+            PlayerPrefs.SetInt("IndexX", Xcount);
+            PlayerPrefs.SetInt("IndexY", Ycount);
+            PlayerPrefs.Save();
         }
        if(timer >= 1.0f)
        {
-            PlayerPrefs.SetInt("Event", py[pattern%4]);
-            PlayerPrefs.Save();
             timer = 0.0f;
        }
     }
 
-    void MovePattern2()
+    void CountReset()
     {
-        if(count == 4 && pattern==0)
+        if (Xcount > 3)
         {
-            pattern++;
+            Xcount = 0;
+            Ycount++;
         }
     }
 }
