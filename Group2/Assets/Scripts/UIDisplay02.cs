@@ -41,8 +41,7 @@ public class UIDisplay02 : MonoBehaviour
         if (screen_x_num== 0 && screen_y_num == 1)
         {
             Debug.Log("iii");
-            Screen.SetActive(true);
-            Senario1();
+            StartCoroutine(Senario1());
         }
     }
 
@@ -51,7 +50,8 @@ public class UIDisplay02 : MonoBehaviour
     {
         Debug.Log("イベント開始");
 
-            Scenarios.text = "主人公\n"
+        Screen.SetActive(true);
+        Scenarios.text = "主人公\n"
                        + "セリフ１\n"
                        + "";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));

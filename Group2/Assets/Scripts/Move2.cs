@@ -38,7 +38,11 @@ public class Move2 : MonoBehaviour
         if (timer > 1.0f) 
         {
             Xcount++;
-            CountReset();
+            if (Xcount > 3)
+            {
+                Ycount++;
+                Xcount = 0;
+            }
             transform.position=new Vector3(px[Xcount], py[Ycount],z);
             PlayerPrefs.SetInt("IndexX", Xcount);
             PlayerPrefs.SetInt("IndexY", Ycount);
@@ -48,14 +52,5 @@ public class Move2 : MonoBehaviour
        {
             timer = 0.0f;
        }
-    }
-
-    void CountReset()
-    {
-        if (Xcount > 3)
-        {
-            Xcount = 0;
-            Ycount++;
-        }
     }
 }

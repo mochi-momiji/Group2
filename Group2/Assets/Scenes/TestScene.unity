@@ -946,11 +946,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e628f105d81344b86a72cb521cc0bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  textObject: {fileID: 1079965521}
-  allMessage: "\u30C1\u30E5\u30FC\u30C8\u30EA\u30A2\u30EB\nW\u30AD\u30FC\u9577\u62BC\u3057\uFF1A\u524D\u9032\nEscape\u30AD\u30FC\uFF1A\u30DD\u30FC\u30BA\u753B\u9762\n<>"
-  splitString: <>
-  textSpeed: 0.05
-  clickFlashTime: 0.2
+  Scenarios: {fileID: 0}
+  ScenariosPanel: {fileID: 0}
+  Screen: {fileID: 0}
 --- !u!114 &1417527584
 MonoBehaviour:
   m_ObjectHideFlags: 0
