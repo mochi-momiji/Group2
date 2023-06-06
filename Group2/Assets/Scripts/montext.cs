@@ -17,7 +17,7 @@ public class montext : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        textbox.text = "私「キャー！」";
+        textbox.text = "私「…！！！」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
