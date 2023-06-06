@@ -602,7 +602,7 @@ SpriteRenderer:
   m_Size: {x: 37.2, y: 28.935349}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &419340766
@@ -796,11 +796,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470899732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 52f93eff514e7034bb130001ade97780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Screen: {fileID: 0}
+  Scenarios: {fileID: 0}
+  ScenariosPanel: {fileID: 0}
 --- !u!4 &1470899734
 Transform:
   m_ObjectHideFlags: 0

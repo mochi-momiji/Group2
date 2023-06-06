@@ -1,17 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-     float timer = 0.0f;
+    //プレイヤー視点(Mein Camera)
+    [SerializeField] GameObject Screen;
+    //表示するテキスト
+    [SerializeField] TMP_Text Scenarios;
+    //テキストを表示するPunel
+    [SerializeField] GameObject ScenariosPanel;
+
+    //
+    float timer = 0.0f;
+    int Xcount = 0;
+    int Ycount = 0;
+    int[] px = { 0, 20, 40, 60 };
+    int[] py = { 0, -20, -40, -60 };
+    float pz = -10.0f;
+
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
-        //ゲーム進捗度の獲得
-        PlayerPrefs.GetFloat("GameTime",0.0f);
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "操作説明\n"
+                       + "Wキー:前進\n"
+                       + "Escapeキー:ポーズ画面";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "道中、アイテムが落ちていることがあり、"
+                       + "アイテムをクリックすることで取得できる。";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -19,27 +45,51 @@ public class GameManager : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.W))
         {
-            //ゲーム進捗時間のカウント
-            timer += Time.deltaTime;
-
-            //ゲーム進捗の保存
-            PlayerPrefs.SetFloat("GameTime", timer);
-            PlayerPrefs.Save();
+            MovePattern1();
         }
 
-        //ESCキーでポーズ画面に移動
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (Xcount == 0 && Ycount == 1)
         {
-            //ゲーム進捗度の保存
-            PlayerPrefs.SetFloat("GameTime", timer);
-            PlayerPrefs.Save();
-            SceneManager.LoadScene("mon.Pause 2");
+            StartCoroutine(Senario1());
         }
+
+        if (Input.GetKey(KeyCode.Delete))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+    }
+
+    void MovePattern1()
+    {
+        timer += Time.deltaTime;
         Debug.Log(timer);
-
-        if(Input.GetKey(KeyCode.Delete)) 
+        if (timer > 1.0f)
         {
-            PlayerPrefs.DeleteKey("GameTime");
+            Xcount++;
+            if (Xcount > 3)
+            {
+               // Ycount++;
+                Xcount = 0;
+            }
+            Screen.transform.position = new Vector3(px[Xcount], py[Ycount], pz);
         }
+        if (timer >= 1.0f)
+        {
+            timer = 0.0f;
+        }
+    }
+
+    IEnumerator Senario1()
+    {
+        Debug.Log("イベント開始");
+
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "主人公\n"
+                       + "セリフ１\n"
+                       + "";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
     }
 }
