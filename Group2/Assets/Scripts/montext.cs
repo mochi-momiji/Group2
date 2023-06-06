@@ -58,7 +58,7 @@ public class montext : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        SceneManager.LoadScene("mon.clear");
+        FadeManager.Instance.LoadScene("mon.clear", 1.0f);
 
 
     }
