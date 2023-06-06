@@ -33,13 +33,13 @@ public class GameManager : MonoBehaviour
             //ÉQÅ[ÉÄêiíªìxÇÃï€ë∂
             PlayerPrefs.SetFloat("GameTime", timer);
             PlayerPrefs.Save();
-            SceneManager.LoadScene("mon.Pause");
+            SceneManager.LoadScene("mon.Pause 2");
         }
         Debug.Log(timer);
 
         if(Input.GetKey(KeyCode.Delete)) 
         {
-            PlayerPrefs.DeleteAll();
+            PlayerPrefs.DeleteKey("GameTime");
         }
     }
 }
