@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Test : MonoBehaviour
@@ -15,9 +16,12 @@ public class Test : MonoBehaviour
     //
     [SerializeField] GameObject Scene5;
 
-    float speed = 0.1f;
+    float SpeedX = 0.05f;
+    float SpeedY = 0.05f;
+    bool flg = false;
     float MoveTime = 0.0f;
-    float MoveLimit = 3.0f;
+    int MoveNum = 0;
+    float MoveLimit = 2.0f; 
     int count = 0;
 
     // Start is called before the first frame update
@@ -27,81 +31,65 @@ public class Test : MonoBehaviour
         Scene2.SetActive(false);
         Scene3.SetActive(false);
         Scene4.SetActive(false);
+        Scene5.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.W)&&count != 3)
+        if (Input.GetKeyDown(KeyCode.W))
         {
-            StartCoroutine(test());
+            flg = true;
+        }
+        if (flg)
+        {
 
-            if(count==3)
-            {
-                Scene1.SetActive(false);
-                Scene2.SetActive(false);
-                Scene3.SetActive(false);
-                Scene4.SetActive(false);
-                Scene5.SetActive(true);
-            }
+            test();
         }
     }
 
-    IEnumerator test()
+    void test()
     {
-        MoveTime = 0.0f;
-        Scene1.SetActive(true);
-        Scene2.SetActive(false);
-        Scene3.SetActive(false);
-        Scene4.SetActive(false);
-        RightHand.transform.position=Vector2.MoveTowards(RightHand.transform.position,
-                                                          (),speed*Time.deltaTime);
-        LeftHand.transform.position = Vector2.MoveTowards(RightHand.transform.position,
-                                                          (),speed * Time.deltaTime);
-        yield return new WaitUntil(() => MoveTime >= MoveLimit);
-        yield return null;
-
-        MoveTime = 0.0f;
-        Scene1.SetActive(false);
-        Scene2.SetActive(true);
-        Scene3.SetActive(false);
-        Scene4.SetActive(false);
         MoveTime += Time.deltaTime;
-        RightHand.transform.position = Vector2.MoveTowards(RightHand.transform.position, 
-                                                            (), speed * Time.deltaTime);
-        LeftHand.transform.position = Vector2.MoveTowards(RightHand.transform.position, 
-                                                            (), speed * Time.deltaTime);
-        yield return new WaitUntil(() => MoveTime >= MoveLimit);
-        yield return null;
 
-        Scene1.SetActive(false);
-        Scene2.SetActive(false);
-        Scene3.SetActive(true);
-        Scene4.SetActive(false);
-        MoveTime += Time.deltaTime;
-        RightHand.transform.position = Vector2.MoveTowards(RightHand.transform.position, 
-                                                            (), speed * Time.deltaTime);
-        LeftHand.transform.position = Vector2.MoveTowards(RightHand.transform.position, 
-                                                            (), speed * Time.deltaTime);
-        yield return new WaitUntil(() => MoveTime >= MoveLimit);
-        yield return null;
+        if(MoveTime <= 0.5f)
+        {
+            Scene1.SetActive(true);
+            Scene4.SetActive(false);
+            RightHand.transform.Translate(-SpeedX, SpeedY, 0.0f);
+            LeftHand.transform.Translate(-SpeedX, -SpeedY, 0.0f);
+        }
 
-        MoveTime = 0.0f;
-        Scene1.SetActive(false);
-        Scene2.SetActive(false);
-        Scene3.SetActive(false);
-        Scene4.SetActive(true);
-        MoveTime += Time.deltaTime;
-        RightHand.transform.position = Vector3.MoveTowards(RightHand.transform.position, 
-                                                            (0.0f,0.0f,0.0f), speed * Time.deltaTime);
-        LeftHand.transform.position = Vector2.MoveTowards(RightHand.transform.position, 
-                                                            (), speed * Time.deltaTime);
-        yield return new WaitUntil(() => MoveTime >= MoveLimit);
-        yield return null;
+        else if (MoveTime <= 1.0f)
+        {
+            Scene1.SetActive(false);
+            Scene2.SetActive(true);
+            RightHand.transform.Translate(SpeedX,-SpeedY, 0.0f);
+            LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
+        }
 
-        //count++;
 
+        else if (MoveTime <= 1.5f)
+        {
+            Scene2.SetActive(false);
+            Scene3.SetActive(true);
+            RightHand.transform.Translate(SpeedX, -SpeedY, 0.0f);
+            LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
+        }
+
+        else if (MoveTime <= 2.0f)
+        {
+            Scene3.SetActive(false);
+            Scene4.SetActive(true);
+            RightHand.transform.Translate(-SpeedX, SpeedY, 0.0f);
+            LeftHand.transform.Translate(-SpeedX, -SpeedY, 0.0f);
+        }
+
+        else 
+        {
+            flg = false;
+            MoveNum = 0;
+            MoveTime = 0.0f;
+        }
     }
 }

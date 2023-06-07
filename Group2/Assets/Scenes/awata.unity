@@ -1075,8 +1075,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b8c441d176bc6942b50448bd3e095cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RightHand: {fileID: 44190149}
-  LeftHand: {fileID: 2082846230}
+  RightHand: {fileID: 2082846230}
+  LeftHand: {fileID: 44190149}
   Scene1: {fileID: 159734964}
   Scene2: {fileID: 1382113405}
   Scene3: {fileID: 1837711963}
