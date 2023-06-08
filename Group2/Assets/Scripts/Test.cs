@@ -16,7 +16,7 @@ public class Test : MonoBehaviour
     //
     [SerializeField] GameObject Scene5;
 
-    float SpeedX = 0.05f;
+    float SpeedX = 0.0f;
     float SpeedY = 0.05f;
     bool flg = false;
     float MoveTime = 0.0f;
@@ -64,10 +64,9 @@ public class Test : MonoBehaviour
         {
             Scene1.SetActive(false);
             Scene2.SetActive(true);
-            RightHand.transform.Translate(SpeedX,-SpeedY, 0.0f);
+            RightHand.transform.Translate(SpeedX, -SpeedY, 0.0f);
             LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
         }
-
 
         else if (MoveTime <= 1.5f)
         {
@@ -77,7 +76,7 @@ public class Test : MonoBehaviour
             LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
         }
 
-        else if (MoveTime <= 2.0f)
+        else if (MoveTime < 2.0f)
         {
             Scene3.SetActive(false);
             Scene4.SetActive(true);
