@@ -43,16 +43,14 @@ public class Test : MonoBehaviour
         }
         if (flg)
         {
-
+            MoveTime += Time.deltaTime;
             test();
         }
     }
 
     void test()
     {
-        MoveTime += Time.deltaTime;
-
-        if(MoveTime <= 0.5f)
+        if(MoveTime < 0.5f)
         {
             Scene1.SetActive(true);
             Scene4.SetActive(false);
@@ -68,7 +66,7 @@ public class Test : MonoBehaviour
             LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
         }
 
-        else if (MoveTime <= 1.5f)
+        else if (MoveTime < 1.5f)
         {
             Scene2.SetActive(false);
             Scene3.SetActive(true);
@@ -76,7 +74,7 @@ public class Test : MonoBehaviour
             LeftHand.transform.Translate(SpeedX, SpeedY, 0.0f);
         }
 
-        else if (MoveTime < 2.0f)
+        else if (MoveTime <= 2.0f)
         {
             Scene3.SetActive(false);
             Scene4.SetActive(true);
