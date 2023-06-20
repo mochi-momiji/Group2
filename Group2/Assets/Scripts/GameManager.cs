@@ -14,87 +14,88 @@ public class GameManager : MonoBehaviour
     //テキストを表示するPunel
     [SerializeField] GameObject ScenariosPanel;
     //移動時のSE
-    public AudioClip movesound;
-    AudioSource audioSource1;
+    public AudioClip MoveSounds;
+    AudioSource MoveAudio;
 
-    bool move_trigger = false;          //Wキー入力判定
-    bool text_trigger = false;          //テキスト表示判定
+    bool Move_Flag = false;
+    bool Text_Flag = false;             //テキスト表示判定
     float timer = 0.0f;                 //移動動作時間
-    int count = 0;                      //px配列のループ回数
+    int ClickCount = 0;
+    int RupeCount = 0;                      //px配列のループ回数
     int event_num = 0;                  //終了したイベント
     int XIndex = 0;                     //px配列のインデックス
     int YIndex = 0;                     //py配列のインデックス
     int[] px = { 0, 20, 40, 60 };       //移動背景の切り替えパターン
-    int[] py = { 0, -20, -40, -60, -80, -100, -120, -140, -160, -180, -200};    //各イベントシーン位置
+    int[] py = { 0, -20, -40, -60, -80, -100, -120, -140, -160, -180, -200 };    //各イベントシーン位置
     float pz = -10.0f;                  //カメラのZ座標
 
 
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {
+        MoveAudio = GetComponent<AudioSource>();
+        Screen.transform.position = new Vector3(px[XIndex], 20, pz);
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "操作説明\n"
+                       + "Wキー:前進\n"
+                       + "Escapeキー:ポーズ画面";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
 
-        switch(count)
-        {
-        case 0:
-            audioSource1 = GetComponent<AudioSource>();
-            ScenariosPanel.SetActive(true);
-            Scenarios.text = "操作説明\n"
-                           + "Wキー:前進\n"
-                           + "Escapeキー:ポーズ画面";
-                break;
-            case 1:
-            Scenarios.text = "道中、アイテムが落ちていることがあり、"
-                           + "アイテムをクリックすることで取得できる。";
-                break;
-        case 2:
-            ScenariosPanel.SetActive(false);
-                count++;
-                break;
-        }
+
+        Scenarios.text = "道中、アイテムが落ちていることがあり、"
+                       + "アイテムをクリックすることで取得できる。";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        if (ScenariosPanel.activeSelf == false)
         {
-            
+            if (Input.GetKey(KeyCode.W))
+            {
+                MovePattern1();
+                Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            }
         }
-        switch (YIndex)
+        switch (Screen.transform.position.y)
         {
-            case 1: 
-                StartCoroutine(Senario1());
+            case -20:
+                Senario1();
                 break;
 
-            case 2: 
-                StartCoroutine(Senario2());
+            case -40:
+                Senario2();
                 break;
 
-            case 3: 
-                StartCoroutine(Senario3());
+            case -60:
+                Senario3();
                 break;
 
-            case 4: 
+            case -80:
                 StartCoroutine(Senario4());
                 break;
 
-            case 5: 
+            case -100:
                 StartCoroutine(Senario5());
                 break;
 
-            case 6:
+            case -120:
                 StartCoroutine(Senario6());
                 break;
 
-            case 7:
+            case -140:
                 StartCoroutine(Senario7());
                 break;
 
-            case 8:
+            case -160:
                 StartCoroutine(Senario8());
                 break;
-
-            case 9:
+            case -180:
                 StartCoroutine(Senario9());
                 break;
         }
@@ -110,21 +111,27 @@ public class GameManager : MonoBehaviour
         timer += Time.deltaTime;
         if (timer > 1.0f)
         {
-            audioSource1.PlayOneShot(movesound);
+            Debug.Log(XIndex);
+            Debug.Log(YIndex);
+            MoveAudio.PlayOneShot(MoveSounds);
             XIndex++;
             if (XIndex > 3)
             {
-                count++;
+                RupeCount++;
                 XIndex = 0;
             }
-            if (count != 0 && count % 3 == 2)
+            if (RupeCount != 0 && RupeCount % 3 == 2)
             {
                 XIndex = 0;
                 YIndex = event_num + 1;
-                count = 0;
+                RupeCount = 0;
                 event_num++;
             }
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            PlayerPrefs.SetInt("XIndex", XIndex);
+            PlayerPrefs.Save();
+            PlayerPrefs.SetInt("YIndex", YIndex);
+            PlayerPrefs.Save();
+
         }
         if (timer >= 1.0f)
         {
@@ -133,89 +140,96 @@ public class GameManager : MonoBehaviour
     }
 
     //アイテム取得(1枚目)
-    IEnumerator Senario1()
+    void Senario1()
     {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+        if (Input.GetMouseButton(0))
+        {
+            ClickCount++;
+        }
+        switch (ClickCount)
+        {
+            case 0:
+                ScenariosPanel.SetActive(true);
+                Scenarios.text = "主人公\n"
+                               + "セリフ\n"
+                               + "";
+                break;
+            case 1:
+                ScenariosPanel.SetActive(false);
 
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                XIndex = 0;
+                YIndex = 0;
+                Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                ClickCount = 0;
+                break;
+        }
     }
 
     //イベント(目)
-    IEnumerator Senario2()
+    void Senario2()
     {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex++;
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "主人公\n"
+        if (Input.GetMouseButton(0))
+        {
+            ClickCount++;
+        }
+        switch (ClickCount)
+        {
+            case 0:
+                ScenariosPanel.SetActive(true);
+                Scenarios.text = "主人公\n"
+                               + "セリフ1\n"
+                               + "";
+                break;
+            case 1:
+                Scenarios.text = "主人公\n"
+                  + "セリフ2\n"
+                  + "";
+                break;
+            case 2:
+                XIndex++;
+                Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                Scenarios.text = "主人公\n"
                        + "セリフ3\n"
                        + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+                break;
+            case 3:
+                ScenariosPanel.SetActive(false);
+                XIndex = 0;
+                YIndex = 0;
+                Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                ClickCount = 0;
+                break;
+        }
+    }    
 
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
-
-    //アイテム取得(2枚目)
-    IEnumerator Senario3()
+        //アイテム取得(2枚目)
+    void Senario3()
     {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+        if (Input.GetMouseButton(0))
+        {
+            ClickCount++;
+        }
+        switch (ClickCount)
+        {
+            case 0:
+                ScenariosPanel.SetActive(true);
+                Scenarios.text = "主人公\n"
+                               + "セリフ\n"
+                               + "";
+                break;
+            case 1:
+                ScenariosPanel.SetActive(false);
 
-        XIndex++;
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                XIndex = 0;
+                YIndex = 0;
+                Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+                ClickCount = 0;
+                break;
+        }
     }
+    
 
-    //イベント(虫)
+        //イベント(虫)
     IEnumerator Senario4()
     {
         ScenariosPanel.SetActive(true);
@@ -233,180 +247,172 @@ public class GameManager : MonoBehaviour
 
         XIndex++;
         Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex  = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
-
-    //アイテム取得(3枚目)
-    IEnumerator Senario5()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
+                       + "セリフ2\n"
                        + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         ScenariosPanel.SetActive(false);
         XIndex = 0;
         YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
-
-    //イベント(モヤ中に敵)
-    IEnumerator Senario6()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "\n"
-                       + " 振り返る\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex++;
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
         yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return null; 
     }
 
-    //アイテム取得(4枚目)
-    IEnumerator Senario7()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+        //アイテム取得(3枚目)
+        IEnumerator Senario5()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
+            ScenariosPanel.SetActive(false);
+            XIndex = 0;
+            YIndex = 0;
+            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
+            yield return null;                
+        }
 
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
+        //イベント(モヤ中に敵)
+        IEnumerator Senario6()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-    //イベント(モヤから敵が出てくる)
-    IEnumerator Senario8()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            Scenarios.text = "\n"
+                           + " 振り返る\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        Scenarios.text = "\n"
-                       + " 振り返る\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            XIndex++;
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        XIndex++;
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            ScenariosPanel.SetActive(false);
+            XIndex = 0;
+            YIndex = 0;
+            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
+            yield return null;
 
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
+            
+        }
 
-    //アイテム取得(5枚目)
-    IEnumerator Senario9()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+        //アイテム取得(4枚目)
+        IEnumerator Senario7()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        event_num++;
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
+            ScenariosPanel.SetActive(false);
+            XIndex = 0;
+            YIndex = 0;
+            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
+            yield return null;
+        }
 
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-    }
+        //イベント(モヤから敵が出てくる)
+        IEnumerator Senario8()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-    //クリアイベント
-    IEnumerator ClearGame()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "セリフ1\n"
-                       + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            Scenarios.text = "\n"
+                           + " 振り返る\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        Scenarios.text = "主人公\n"
-                      + "セリフ2\n"
-                      + "";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
+            XIndex++;
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
 
-        SceneManager.LoadScene("ClearScene");
-    }
+            ScenariosPanel.SetActive(false);
+            XIndex = 0;
+            YIndex = 0;
+            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
+            yield return null;
+        }
+
+        //アイテム取得(5枚目)
+        IEnumerator Senario9()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
+
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
+
+            ScenariosPanel.SetActive(false);
+            XIndex = 0;
+            YIndex = 0;
+            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
+            yield return null;
+        }
+
+        //クリアイベント
+        IEnumerator ClearGame()
+        {
+            ScenariosPanel.SetActive(true);
+            Scenarios.text = "主人公\n"
+                           + "セリフ1\n"
+                           + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
+
+            Scenarios.text = "主人公\n"
+                          + "セリフ2\n"
+                          + "";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
+
+            SceneManager.LoadScene("ClearScene");
+        }
+    
 }
