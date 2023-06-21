@@ -16,11 +16,11 @@ public class Restart : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            FadeManager.Instance.LoadScene("SampleScene", 0.5f);
+            FadeManager.Instance.LoadScene("yamaren", 0.5f);
         }
         if(Input.GetMouseButtonDown(0))
         {
-            FadeManager.Instance.LoadScene("SampleScene", 0.5f);
+            FadeManager.Instance.LoadScene("yamaren", 0.5f);
         }
     }
 }
