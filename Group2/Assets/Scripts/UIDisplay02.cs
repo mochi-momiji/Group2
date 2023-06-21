@@ -50,7 +50,7 @@ public class UIDisplay02 : MonoBehaviour
     {
         Debug.Log("イベント開始");
 
-        Screen.SetActive(true);
+        ScenariosPanel.SetActive(true);
         Scenarios.text = "主人公\n"
                        + "セリフ１\n"
                        + "";
