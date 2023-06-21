@@ -30,8 +30,6 @@ EditorBuildSettings:
     path: Assets/Scenes/mon.clear.unity
     guid: c2f8eac2774a92c40ad446fdd0d9663f
   - enabled: 1
-    path: Assets/GameoverScene.unity
-    guid: 6955a1db4510b05458943f7d071f4de6
     path: Assets/Scenes/GameoverScene.unity
     guid: 6955a1db4510b05458943f7d071f4de6
   - enabled: 1

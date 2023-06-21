@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     public AudioClip MoveSounds;
     AudioSource MoveAudio;
 
+    const int FIRST_INDEX = 0;
+
     bool Move_Flag = false;
     bool Text_Flag = false;             //テキスト表示判定
     float timer = 0.0f;                 //移動動作時間
@@ -169,9 +171,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
     }
 
     //イベント(目)
@@ -199,9 +199,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
     }
 
     //アイテム取得(2枚目)
@@ -221,9 +219,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
         yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
         yield return null;
     }
@@ -253,9 +249,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        XIndex = 0;
-        YIndex = 0;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
         yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
         yield return null; 
     }
@@ -277,9 +271,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             ScenariosPanel.SetActive(false);
-            XIndex = 0;
-            YIndex = 0;
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
             yield return null;                
         }
@@ -308,9 +300,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             ScenariosPanel.SetActive(false);
-            XIndex = 0;
-            YIndex = 0;
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
             yield return null;
 
@@ -334,9 +324,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             ScenariosPanel.SetActive(false);
-            XIndex = 0;
-            YIndex = 0;
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
             yield return null;
         }
@@ -365,9 +353,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             ScenariosPanel.SetActive(false);
-            XIndex = 0;
-            YIndex = 0;
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
             yield return null;
         }
@@ -389,9 +375,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             ScenariosPanel.SetActive(false);
-            XIndex = 0;
-            YIndex = 0;
-            Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
             yield return null;
         }
