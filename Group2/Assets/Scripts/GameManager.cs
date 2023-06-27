@@ -35,6 +35,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
+        PlayerPrefs.GetInt("XIdex",0);
+        PlayerPrefs.GetInt("EventNum", 0);
+
         MoveAudio = GetComponent<AudioSource>();
         Screen.transform.position = new Vector3(px[XIndex], 20, pz);
         ScenariosPanel.SetActive(true);
@@ -56,6 +59,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            PlayerPrefs.SetInt("XIndex", XIndex);
+            PlayerPrefs.SetInt("EventNum", event_num);
+            PlayerPrefs.Save();
+
+            SceneManager.LoadScene("mon.pause 2");//É|Å[ÉYâÊñ 
+        }
+
         if (ScenariosPanel.activeSelf == false)
         {
             if (Input.GetKey(KeyCode.W))
