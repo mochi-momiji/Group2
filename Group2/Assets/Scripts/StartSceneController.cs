@@ -8,7 +8,8 @@ public class StartSceneController : MonoBehaviour
 {
     public void ButtonClick()　//ButtonClickは自身が分かれば他の名前でも可
     {
-        SceneManager.LoadScene("event01"); //("")の中に遷移したいScene名を指定することで、指定されたSceneに遷移可能
+        SceneManager.LoadScene("awata"); //("")の中に遷移したいScene名を指定することで、指定されたSceneに遷移可能
+        //FadeManager.Instance.LoadScene("SampleScene", 0.5f);
     }
     
     

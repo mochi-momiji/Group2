@@ -4,13 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class OptionSceneController : MonoBehaviour
+public class RestartController : MonoBehaviour
 {
-    public void ButtonClick()
-    {
-        SceneManager.LoadScene("SampleScene");
+    public void SwitchScene()
+    {    
+            FadeManager.Instance.LoadScene("awata", 0.5f);       
     }
-    // Start is called before the first frame update
+   
     void Start()
     {
         
@@ -21,4 +21,5 @@ public class OptionSceneController : MonoBehaviour
     {
         
     }
+    
 }

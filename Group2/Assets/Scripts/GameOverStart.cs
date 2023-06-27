@@ -1,15 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
-public class OptionSceneController : MonoBehaviour
+public class GameOverStart : MonoBehaviour
 {
-    public void ButtonClick()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +13,9 @@ public class OptionSceneController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(0))
+        {
+            FadeManager.Instance.LoadScene("yamaren", 1f);
+        }
     }
 }

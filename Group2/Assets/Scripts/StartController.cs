@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class OptionSceneController : MonoBehaviour
+
+public class StartController : MonoBehaviour
 {
-    public void ButtonClick()
+    public void SwitchScene()
     {
-        SceneManager.LoadScene("SampleScene");
+        FadeManager.Instance.LoadScene("SampleScene", 0.5f);
     }
     // Start is called before the first frame update
     void Start()
