@@ -25,9 +25,8 @@ public class ibventry : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
+    { 
         inventry.SetActive(false);
-        news_text.SetActive(false);
         news1.SetActive(false);
         news2.SetActive(false);
         news3.SetActive(false); 
@@ -39,41 +38,43 @@ public class ibventry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inventry||Input.GetKey(KeyCode.Space))
+        if(Input.GetKeyDown(KeyCode.Space))
         {
+            Debug.Log("open");
             inventry.SetActive(true);
         }
-        if(!inventry||Input.GetKey(KeyCode.Backspace)) 
+        if(Input.GetKeyDown(KeyCode.Backspace)) 
         {
             inventry.SetActive(false);
         }
-        if (!trigger1)
+        if (trigger1.activeSelf == false && trigger_count==0)
         {
             news1.SetActive(true);
             trigger_count++;
         }
-        if(!trigger2) 
+        if(trigger2.activeSelf==false && trigger_count == 1) 
         {
             news2.SetActive(true);
             trigger_count++;
         }
-        if(!trigger3)
+        if(trigger3.activeSelf == false && trigger_count == 2)
         {
             news3.SetActive(true);
             trigger_count++;
         }
-        if(!trigger4)
+        if(trigger4.activeSelf == false && trigger_count == 3)
         {
             news4.SetActive(true);
             trigger_count++;
         }
-        if(!trigger5)
+        if(trigger5.activeSelf == false && trigger_count == 4)
         {
             news5.SetActive(true);
             trigger_count++;
         }
-        if(trigger_count==5)
+        if(trigger_count == 5)
         {
+            Debug.Log(trigger_count);
             news1.SetActive(false);
             news2.SetActive(false);
             news3.SetActive(false);
@@ -81,10 +82,7 @@ public class ibventry : MonoBehaviour
             news5.SetActive(false);
             newsfull.SetActive(true);
         }
-        if(newsfull && Input.GetMouseButtonDown(0))
-        {
-            news_text.SetActive(true);
-            news_text.GetComponent<TextMeshProUGUI>().text = "éñåèì‡óe";
-        }
     }
+
+
 }

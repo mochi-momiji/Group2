@@ -8,11 +8,20 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     //プレイヤー視点(Mein Camera)
-    [SerializeField] GameObject Screen;
+    public GameObject Screen;
     //表示するテキスト
-    [SerializeField] TMP_Text Scenarios;
+    public TMP_Text Scenarios;
     //テキストを表示するPunel
-    [SerializeField] GameObject ScenariosPanel;
+    public GameObject ScenariosPanel;
+
+    public GameObject Inventry;
+
+    public GameObject trigger1;
+    public GameObject trigger2;
+    public GameObject trigger3;
+    public GameObject trigger4;
+    public GameObject trigger5;
+
     //移動時のSE
     public AudioClip MoveSounds;
     AudioSource MoveAudio;
@@ -53,12 +62,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX],pz);
         ScenariosPanel.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //ポーズ画面の移動/ゲーム進行の保存
         if (Input.GetKey(KeyCode.Escape))
         {
             PlayerPrefs.SetInt("XIndex", XIndex);
@@ -67,8 +78,10 @@ public class GameManager : MonoBehaviour
 
             SceneManager.LoadScene("mon.pause 2");//ポーズ画面
         }
-
-        if (ScenariosPanel.activeSelf == false)
+        //移動モーション
+        //セリフ・インベントリを開いてないかつ移動ループに戻っている
+        if (ScenariosPanel.activeSelf == false && Inventry.activeSelf == false 
+            && Screen.transform.position.y == py[FIRST_INDEX])
         {
             if (Input.GetKey(KeyCode.W))
             {
@@ -77,6 +90,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        //イベント時のテキスト表示
         if (Text_Flag)
         {
             switch (Screen.transform.position.y)
@@ -175,12 +189,19 @@ public class GameManager : MonoBehaviour
                        + "";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
-        
+
+        ScenariosPanel.SetActive(false);
+        yield return new WaitUntil(() => trigger1.activeSelf == false);
+
+        ScenariosPanel.SetActive(true);
         Scenarios.text = "主人公\n"
                       + "セリフ2\n"
                       + "";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
+
+        XIndex = FIRST_INDEX;
+        YIndex = FIRST_INDEX;
 
         ScenariosPanel.SetActive(false);
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
@@ -210,6 +231,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        XIndex = FIRST_INDEX;
+        YIndex = FIRST_INDEX;
+
         ScenariosPanel.SetActive(false);
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
     }
@@ -224,16 +248,21 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        ScenariosPanel.SetActive(false);
+        yield return new WaitUntil(() => trigger2.activeSelf == false);
+
         Scenarios.text = "主人公\n"
                       + "セリフ2\n"
                       + "";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        XIndex = FIRST_INDEX;
+        YIndex = FIRST_INDEX;
+
         ScenariosPanel.SetActive(false);
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null;
+        
     }
 
 
@@ -260,10 +289,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        XIndex = FIRST_INDEX;
+        YIndex = FIRST_INDEX;
+
         ScenariosPanel.SetActive(false);
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-        yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-        yield return null; 
     }
 
         //アイテム取得(3枚目)
@@ -282,10 +312,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
+            XIndex = FIRST_INDEX;
+            YIndex = FIRST_INDEX;
+
             ScenariosPanel.SetActive(false);
-            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-            yield return null;                
+            Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);              
         }
 
         //イベント(モヤ中に敵)
@@ -311,10 +342,11 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
+            XIndex = FIRST_INDEX;
+            YIndex = FIRST_INDEX;
+
             ScenariosPanel.SetActive(false);
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-            yield return null;
 
             
         }
@@ -335,10 +367,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
+
+            XIndex = FIRST_INDEX;
+            YIndex = FIRST_INDEX;
             ScenariosPanel.SetActive(false);
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-            yield return null;
+            
         }
 
         //イベント(モヤから敵が出てくる)
@@ -364,10 +398,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
+            XIndex = FIRST_INDEX;
+            YIndex = FIRST_INDEX;
+
             ScenariosPanel.SetActive(false);
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-            yield return null;
+           
         }
 
         //アイテム取得(5枚目)
@@ -386,10 +422,12 @@ public class GameManager : MonoBehaviour
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
+            XIndex = FIRST_INDEX;
+            YIndex = FIRST_INDEX;
+
             ScenariosPanel.SetActive(false);
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-            yield return new WaitUntil(() => Input.GetKey(KeyCode.W));
-            yield return null;
+            
         }
 
         //クリアイベント

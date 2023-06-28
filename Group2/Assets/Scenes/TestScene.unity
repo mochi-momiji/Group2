@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 188536206}
   - component: {fileID: 188536205}
   - component: {fileID: 188536207}
+  - component: {fileID: 188536208}
   m_Layer: 0
   m_Name: kami (7)
   m_TagString: Untagged
@@ -299,6 +300,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &188536208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188536204}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &264969938
 GameObject:
   m_ObjectHideFlags: 0
@@ -310,6 +323,7 @@ GameObject:
   - component: {fileID: 264969940}
   - component: {fileID: 264969939}
   - component: {fileID: 264969941}
+  - component: {fileID: 264969942}
   m_Layer: 0
   m_Name: kami (2)
   m_TagString: Untagged
@@ -410,6 +424,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &264969942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264969938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &289640525
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +854,7 @@ GameObject:
   - component: {fileID: 488038794}
   - component: {fileID: 488038793}
   - component: {fileID: 488038795}
+  - component: {fileID: 488038796}
   m_Layer: 0
   m_Name: kami (5)
   m_TagString: Untagged
@@ -928,6 +955,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &488038796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 488038792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &559177056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1057,6 +1096,7 @@ GameObject:
   - component: {fileID: 589292538}
   - component: {fileID: 589292537}
   - component: {fileID: 589292539}
+  - component: {fileID: 589292540}
   m_Layer: 0
   m_Name: kami (8)
   m_TagString: Untagged
@@ -1157,6 +1197,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &589292540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589292536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &621810154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1225,6 +1277,7 @@ GameObject:
   - component: {fileID: 628859908}
   - component: {fileID: 628859907}
   - component: {fileID: 628859909}
+  - component: {fileID: 628859910}
   m_Layer: 0
   m_Name: kami (1)
   m_TagString: Untagged
@@ -1325,6 +1378,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &628859910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628859906}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &741866737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1336,6 +1401,7 @@ GameObject:
   - component: {fileID: 741866739}
   - component: {fileID: 741866738}
   - component: {fileID: 741866740}
+  - component: {fileID: 741866741}
   m_Layer: 0
   m_Name: kami (3)
   m_TagString: Untagged
@@ -1436,6 +1502,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &741866741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741866737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &788466007
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1723,7 @@ GameObject:
   - component: {fileID: 841563159}
   - component: {fileID: 841563158}
   - component: {fileID: 841563160}
+  - component: {fileID: 841563161}
   m_Layer: 0
   m_Name: kami
   m_TagString: Untagged
@@ -1745,6 +1824,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &841563161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 841563157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &861207087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2284,6 +2375,7 @@ GameObject:
   - component: {fileID: 1103806963}
   - component: {fileID: 1103806962}
   - component: {fileID: 1103806964}
+  - component: {fileID: 1103806965}
   m_Layer: 0
   m_Name: kami (4)
   m_TagString: Untagged
@@ -2384,6 +2476,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1103806965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1103806961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1123351310
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3015,8 +3119,6 @@ GameObject:
   - component: {fileID: 1417527580}
   - component: {fileID: 1417527579}
   - component: {fileID: 1417527583}
-  - component: {fileID: 1417527584}
-  - component: {fileID: 1417527585}
   m_Layer: 5
   m_Name: GameText
   m_TagString: Untagged
@@ -3114,35 +3216,24 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1417527578}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9e628f105d81344b86a72cb521cc0bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 512237e887281c541aab0abb6a447db9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1417527584
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417527578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1417527585
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1417527578}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e51353e79487fe49adb09f168e1d0a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  trigger1: {fileID: 841563157}
+  trigger2: {fileID: 264969938}
+  trigger3: {fileID: 1103806961}
+  trigger4: {fileID: 1566556173}
+  trigger5: {fileID: 589292536}
+  news1: {fileID: 289640525}
+  news2: {fileID: 326015256}
+  news3: {fileID: 1190635095}
+  news4: {fileID: 1382123868}
+  news5: {fileID: 2081408028}
+  newsfull: {fileID: 1754770282}
+  inventry: {fileID: 1919352948}
+  news_text: {fileID: 1361478809}
 --- !u!1 &1467566348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3375,6 +3466,7 @@ GameObject:
   - component: {fileID: 1566556175}
   - component: {fileID: 1566556174}
   - component: {fileID: 1566556176}
+  - component: {fileID: 1566556177}
   m_Layer: 0
   m_Name: kami (6)
   m_TagString: Untagged
@@ -3475,6 +3567,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1566556177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1566556173}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e13d642758587e40b02e93bb6a45bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1585458667
 GameObject:
   m_ObjectHideFlags: 0
@@ -3485,7 +3589,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1585458669}
   - component: {fileID: 1585458668}
-  - component: {fileID: 1585458671}
   - component: {fileID: 1585458670}
   m_Layer: 0
   m_Name: GameManager
@@ -3509,6 +3612,12 @@ MonoBehaviour:
   Screen: {fileID: 1647250983}
   Scenarios: {fileID: 1079965523}
   ScenariosPanel: {fileID: 1617343461}
+  Inventry: {fileID: 1919352948}
+  trigger1: {fileID: 841563157}
+  trigger2: {fileID: 264969938}
+  trigger3: {fileID: 1103806961}
+  trigger4: {fileID: 1566556173}
+  trigger5: {fileID: 589292536}
   MoveSounds: {fileID: 8300000, guid: 8bb2591de7e398e45818ab6a16bc38aa, type: 3}
 --- !u!4 &1585458669
 Transform:
@@ -3535,7 +3644,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 8bb2591de7e398e45818ab6a16bc38aa, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3621,31 +3730,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1585458671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1585458667}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512237e887281c541aab0abb6a447db9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trigger1: {fileID: 841563157}
-  trigger2: {fileID: 264969938}
-  trigger3: {fileID: 1103806961}
-  trigger4: {fileID: 1566556173}
-  trigger5: {fileID: 589292536}
-  news1: {fileID: 289640525}
-  news2: {fileID: 326015256}
-  news3: {fileID: 1190635095}
-  news4: {fileID: 1382123868}
-  news5: {fileID: 2081408028}
-  newsfull: {fileID: 1754770282}
-  inventry: {fileID: 1919352948}
-  news_text: {fileID: 1361478809}
 --- !u!1 &1617343461
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,7 +3747,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1617343462
 RectTransform:
   m_ObjectHideFlags: 0
