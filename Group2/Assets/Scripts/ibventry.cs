@@ -83,6 +83,4 @@ public class ibventry : MonoBehaviour
             newsfull.SetActive(true);
         }
     }
-
-
 }
