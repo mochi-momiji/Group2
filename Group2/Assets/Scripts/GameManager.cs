@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
     {
         YIndex = PlayerPrefs.GetInt("YIndex", 11);
         event_num = PlayerPrefs.GetInt("EventNum", 0);
+        Move_Flag = true;
         Text_Flag = true;
         event_item.SetActive(false);
         ScenariosPanel.SetActive(false);
@@ -98,7 +99,6 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             YIndex = FIRST_INDEX;
-            Move_Flag = true;
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             ScenariosPanel.SetActive(false);
         }
@@ -324,8 +324,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        ScenariosPanel.SetActive(false);
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return new WaitForSeconds(1.0f);
+
+        ScenariosPanel.SetActive(true);
         Scenarios.text = "主人公「...えっ...。な、何なのよ!!これ...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
@@ -334,8 +338,12 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        ScenariosPanel.SetActive(false);
         XIndex--;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return new WaitForSeconds(1.0f);
+
+        ScenariosPanel.SetActive(true);
 
         Scenarios.text = "主人公「も、元に、戻った？...何だったのよ...あれ」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
@@ -411,6 +419,14 @@ public class GameManager : MonoBehaviour
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
         Scenarios.text = "主人公「あんなにたくさんの虫とかムリ!!う～...早く帰りたい」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        XIndex -= 2;
+        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return new WaitForSeconds(1.0f);
+
+        Scenarios.text = "主人公「き、消えた。と、とにかく早く脱出しよう」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -603,6 +619,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        Scenarios.text = "\n"
+                       + "新武運記事を手に入れた";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
         XIndex = FIRST_INDEX;
         YIndex = FIRST_INDEX;
 
@@ -638,7 +659,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("mon.clear");
+        SceneManager.LoadScene("mon.hospital");
     }
     
 }
