@@ -46,6 +46,7 @@ public class ibventry : MonoBehaviour
                 news2.SetActive(true);
                 break;
             case 3:
+                Debug.Log("abc");
                 news1.SetActive(true);
                 news2.SetActive(true);
                 news3.SetActive(true);
@@ -70,12 +71,9 @@ public class ibventry : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerPrefs.SetInt("trigger_num", trigger_count);
-        PlayerPrefs.Save();
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("open");
             inventry.SetActive(true);
         }
         if(Input.GetKeyDown(KeyCode.Backspace)) 
@@ -86,26 +84,36 @@ public class ibventry : MonoBehaviour
         {
             news1.SetActive(true);
             trigger_count++;
+            PlayerPrefs.SetInt("trigger_num", trigger_count);
+            PlayerPrefs.Save();
         }
         if(trigger2.activeSelf==false && trigger_count == 1) 
         {
             news2.SetActive(true);
             trigger_count++;
+            PlayerPrefs.SetInt("trigger_num", trigger_count);
+            PlayerPrefs.Save();
         }
         if(trigger3.activeSelf == false && trigger_count == 2)
         {
             news3.SetActive(true);
             trigger_count++;
+            PlayerPrefs.SetInt("trigger_num", trigger_count);
+            PlayerPrefs.Save();
         }
         if(trigger4.activeSelf == false && trigger_count == 3)
         {
             news4.SetActive(true);
             trigger_count++;
+            PlayerPrefs.SetInt("trigger_num", trigger_count);
+            PlayerPrefs.Save();
         }
         if(trigger5.activeSelf == false && trigger_count == 4)
         {
             news5.SetActive(true);
             trigger_count++;
+            PlayerPrefs.SetInt("trigger_num", trigger_count);
+            PlayerPrefs.Save();
         }
         if(trigger_count == 5)
         {
@@ -116,6 +124,11 @@ public class ibventry : MonoBehaviour
             news4.SetActive(false);
             news5.SetActive(false);
             newsfull.SetActive(true);
+        }
+
+        if(Input.GetKeyDown(KeyCode.Delete)) 
+        {
+            PlayerPrefs.DeleteAll();
         }
     }
 }

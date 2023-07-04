@@ -637,6 +637,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("mon.clear");
     }
     
