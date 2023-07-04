@@ -38,20 +38,23 @@ public class ibventry : MonoBehaviour
 
         switch (trigger_count)
         {
-            case 0:
+            case 1:
                 news1.SetActive(true);
                 break;
-            case 1:
+            case 2:
+                news1.SetActive(true);
                 news2.SetActive(true);
                 break;
-            case 2:
+            case 3:
+                news1.SetActive(true);
+                news2.SetActive(true);
                 news3.SetActive(true);
                 break;
-            case 3:
-                news4.SetActive(true);
-                break;
             case 4:
-                news5.SetActive(true);
+                news1.SetActive(true);
+                news2.SetActive(true);
+                news3.SetActive(true);
+                news4.SetActive(true);
                 break;
             case 5:
                 news1.SetActive(false);

@@ -67,36 +67,32 @@ public class GameManager : MonoBehaviour
         if(YIndex == 11)
         {
             ScenariosPanel.SetActive(true);
-            Scenarios.text = "主人公\n"
-                           + "ここは…どこなの\n"
-                           + "何も思い出せない";
+            Scenarios.text = "主人公「ここは…どこなの、名前は...覚えてる。」";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "主人公\n"
-                            + "なんでこんなになところに...";
+            Scenarios.text = "主人公「なんでこんなになところに...」";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "主人公\n"
-                           + "・・・・";
+            Scenarios.text = "・・・・";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "主人公\n"
-                           + "とりあえず進まないと";
+            Scenarios.text = "主人公「とりあえず進まないと」";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "操作説明\n"
+            Scenarios.text = "操作説明1\n"
                            + "Wキー:前進\n"
                            + "Escapeキー:ポーズ画面\n"
-                           + "Spaceキー:インベントリ";
+                           + "Spaceキー:インベントリ/BackSpace:閉じる";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
 
-            Scenarios.text = "道中、アイテムが落ちていることがあり、"
+            Scenarios.text = "操作説明2\n"
+                           + "道中、アイテムが落ちていることがあり、"
                            + "アイテムをクリックすることで取得できる。";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
@@ -274,8 +270,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario1()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "なんだろう...これ..\n";
+        Scenarios.text = "主人公「なんだろう...これ..」\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -286,19 +281,16 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                      + "これは新聞の記事みたいだけど、\n"
-                      + "なんでこんなところにあるんだろ";
+        Scenarios.text = "主人公「これは新聞の記事みたいだけど、"
+            　　　　　　+"なんでこんなところにあるんだろ」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "主人公\n"
-                       + "とりあえず、拾っておこう\n";
+        Scenarios.text = "主人公「とりあえず、拾っておこう」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "\n"
-                       + "新聞記事の破片その1を手に入れた。\n";
+        Scenarios.text = "新聞記事の破片その1を手に入れた。";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -313,8 +305,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario2()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "また紙が落ちてる\n";
+        Scenarios.text = "主人公「また紙が落ちてる」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -329,33 +320,24 @@ public class GameManager : MonoBehaviour
 
         event_item.SetActive(false);
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "ミツケタってどういうこと?\n"
-                       + "誰かが探してるってこと?";
+        Scenarios.text = "主人公「ミツケタってどういうこと?」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "主人公\n"
-                       + "...えっ...\n"
-                       + "な、何なのよ!!これ...\n";
-
+        Scenarios.text = "主人公「...えっ...。な、何なのよ!!これ...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "主人公\n"
-                       + "さっきの見つけたって...それにこの目は\n"
-                       + "";
+        Scenarios.text = "主人公「さっきの見つけたって...それにこの目は」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         XIndex--;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
 
-        Scenarios.text = "主人公\n"
-                       + "も、元に戻ったの？\n"
-                       + "...何だったのよ...あれ";
+        Scenarios.text = "主人公「も、元に、戻った？...何だったのよ...あれ」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -370,14 +352,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario3()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "また紙が落ちてる...\n"
-                       + "拾っても大丈夫かな";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "主人公\n"
-                       + "気になるし拾っておこう\n";
+        Scenarios.text = "主人公「また紙が落ちてる...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -388,15 +363,11 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                      + "な、何も起こらない？\n"
-                      + "紙は...新聞記事の続きみたいね";
+        Scenarios.text = "主人公「な、何も起こらない？紙は...新聞記事の続きみたいね」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "\n"
-                       + "新聞記事の破片その2を手に入れた\n"
-                       + "";
+        Scenarios.text =  "新聞記事の破片その2を手に入れた\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -412,9 +383,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario4()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "新聞記事の続きかな\n"
-                       + "拾ってみよう";
+        Scenarios.text = "主人公「...紙がまた落ちてる。」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -425,29 +394,23 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "し、新聞記事じゃない...\n"
-                       + "も、もしかして...";
+        Scenarios.text = "主人公「し、新聞記事じゃない...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "主人公\n"
-                       + "ヒィ！、こ、この音...もしかして\n";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex++;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "主人公\n"
-                       + "キャー!!\n";
+        Scenarios.text = "主人公「ヒィ！、こ、この音はっ..」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "主人公\n"
-                       + "あんなにたくさんの虫とかムリ\n"
-                       + "う～...早く帰りたい";
+        Scenarios.text = "主人公「キャー!!」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        XIndex++;
+        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Scenarios.text = "主人公「あんなにたくさんの虫とかムリ!!う～...早く帰りたい」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -462,8 +425,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario5()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "紙...大丈夫かな...\n";
+        Scenarios.text = "主人公「紙...大丈夫かな...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -474,13 +436,11 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "新聞記事...よかったぁ\n";
+        Scenarios.text = "主人公「新聞記事...よかったぁ」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "\n"
-                       + "新聞記事の破片その3を手に入れた\n";
+        Scenarios.text = "新聞記事の破片その3を手に入れた\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -495,9 +455,7 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario6()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       +"また紙が落ちてる...\n"
-                       + "今度はどっちだろう";
+        Scenarios.text = "主人公「紙が落ちてる...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -508,17 +466,13 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "\n"
-                       + " 振り返る\n"
-                       + "";
+        Scenarios.text = " \n振り返る\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "主人公\n"
-                      + "名にこのモヤ...\n"
-                      + "うん?...奥に何かいる!!逃げないと!";
+        Scenarios.text = "主人公「なにこのモヤ...うん?...奥に何かいる!!逃げないと!」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -533,9 +487,11 @@ public class GameManager : MonoBehaviour
     IEnumerator Senario7()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "こんな時にまた落ちてる!\n"
-                       + "でも拾っておかないと...";
+        Scenarios.text = "主人公「こんな時にまた落ちてる!」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "主人公「記事なら脱出のヒントになるかも。」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -546,14 +502,15 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "もう少しで読めそう、脱出のヒントになるといいけど\n"
-                       + "とにかく逃げよう";
+        Scenarios.text = "主人公「もう少しで読めそう、脱出のヒントになるといいけど」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "\n"
-                       + "新聞記事の破片その4を手に入れた\n";
+        Scenarios.text = "主人公「とにかく逃げよう!」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "新聞記事の破片その4を手に入れた\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -569,7 +526,7 @@ public class GameManager : MonoBehaviour
     {
         ScenariosPanel.SetActive(true);
         Scenarios.text = "主人公\n"
-                       + "支持の続きかな?\n";
+                       + "記事の続きかな?\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -657,20 +614,26 @@ public class GameManager : MonoBehaviour
     IEnumerator ClearGame()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "主人公\n"
-                       + "逃げ切れた?...\n"
-                       + "えっ...";
+        Scenarios.text = "主人公「逃げ切れた?...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "主人公\n"
-                       + "いやー!!\n";
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "主人公「えっ...」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "主人公\n"
-                       + "ごめんなさいごめんなさいごめんなさいごめんなさい\n"
-                       + "ごめんなさいごめんなさいごめんなさい";
+
+        Scenarios.text = "古賀 千尋??「ツカマエタ...ニガサナイ」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "主人公「いやー!!」";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "主人公「ごめんなさいごめんなさいごめんなさい" +
+            "ごめんなさいごめんなさいごめんなさいごめんなさい」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
