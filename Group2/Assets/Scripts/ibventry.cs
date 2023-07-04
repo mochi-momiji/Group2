@@ -19,7 +19,7 @@ public class ibventry : MonoBehaviour
     public GameObject newsfull;
 
     public GameObject inventry;
-    public GameObject news_text;
+    public TMP_Text news_text;
 
     int trigger_count = 0;
 
