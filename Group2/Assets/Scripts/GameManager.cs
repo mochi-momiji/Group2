@@ -55,10 +55,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        XIndex = PlayerPrefs.GetInt("XIndex", 0);
         YIndex = PlayerPrefs.GetInt("YIndex", 11);
         event_num = PlayerPrefs.GetInt("EventNum", 0);
-        Move_Flag = true;
+        Text_Flag = true;
         event_item.SetActive(false);
         ScenariosPanel.SetActive(false);
         AudioSouce = GetComponent<AudioSource>();
@@ -103,7 +102,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             YIndex = FIRST_INDEX;
-
+            Move_Flag = true;
             Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
             ScenariosPanel.SetActive(false);
         }
@@ -548,7 +547,7 @@ public class GameManager : MonoBehaviour
 
         ScenariosPanel.SetActive(true);
         Scenarios.text = "ŽålŒö\n"
-                       + "‚ ‚ÆŽc‚è1–‡A’Eo‚Ìƒqƒ“ƒg‚É‚È‚é‚Æ‚¢‚¢‚¯‚Ç\n"
+                       + "‚à‚¤­‚µ‚Å“Ç‚ß‚»‚¤A’Eo‚Ìƒqƒ“ƒg‚É‚È‚é‚Æ‚¢‚¢‚¯‚Ç\n"
                        + "‚Æ‚É‚©‚­“¦‚°‚æ‚¤";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
@@ -570,7 +569,7 @@ public class GameManager : MonoBehaviour
     {
         ScenariosPanel.SetActive(true);
         Scenarios.text = "ŽålŒö\n"
-                       + "ÅŒã‚Ì”j•Ð‚©‚È?\n";
+                       + "ŽxŽ‚Ì‘±‚«‚©‚È?\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 

@@ -33,11 +33,43 @@ public class ibventry : MonoBehaviour
         news4.SetActive(false);
         news5.SetActive(false);
         newsfull.SetActive(false);
+
+        trigger_count = PlayerPrefs.GetInt("trigger_num", 0);
+
+        switch (trigger_count)
+        {
+            case 0:
+                news1.SetActive(true);
+                break;
+            case 1:
+                news2.SetActive(true);
+                break;
+            case 2:
+                news3.SetActive(true);
+                break;
+            case 3:
+                news4.SetActive(true);
+                break;
+            case 4:
+                news5.SetActive(true);
+                break;
+            case 5:
+                news1.SetActive(false);
+                news2.SetActive(false);
+                news3.SetActive(false);
+                news4.SetActive(false);
+                news5.SetActive(false);
+                newsfull.SetActive(true);
+                break;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        PlayerPrefs.SetInt("trigger_num", trigger_count);
+        PlayerPrefs.Save();
+
         if(Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log("open");
