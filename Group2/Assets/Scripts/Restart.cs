@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Restart : MonoBehaviour
 {
+     public void SwitchScene()
+    {
+        FadeManager.Instance.LoadScene("yamaren", 0.5f);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,13 +19,8 @@ public class Restart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            FadeManager.Instance.LoadScene("yamaren", 0.5f);
-        }
-        if(Input.GetMouseButtonDown(0))
-        {
-            FadeManager.Instance.LoadScene("yamaren", 0.5f);
-        }
+      
     }
+
+    
 }

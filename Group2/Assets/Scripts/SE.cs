@@ -5,7 +5,8 @@ using UnityEngine;
 public class SE : MonoBehaviour
 {
 
-    public AudioClip sound1;
+    public AudioClip sound1;//メッセージめくり音
+    public AudioClip sound2;//寺の鐘
     AudioSource audioSource;
 
     void Start()
