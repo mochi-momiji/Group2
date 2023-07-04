@@ -7,8 +7,10 @@ public class montext : MonoBehaviour
 {
     [SerializeField] UnityEngine.UI.Text textbox;
 
+
     IEnumerator Start()
     {
+       
         textbox.text = "私「ここは……病院？」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
@@ -57,6 +59,7 @@ public class montext : MonoBehaviour
         textbox.text = "今は忘れて、体調の回復に努めるとしよう…";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
+
 
         FadeManager.Instance.LoadScene("mon.clear", 1.0f);
 
