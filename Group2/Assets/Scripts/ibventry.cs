@@ -46,7 +46,6 @@ public class ibventry : MonoBehaviour
                 news2.SetActive(true);
                 break;
             case 3:
-                Debug.Log("abc");
                 news1.SetActive(true);
                 news2.SetActive(true);
                 news3.SetActive(true);
@@ -117,7 +116,6 @@ public class ibventry : MonoBehaviour
         }
         if(trigger_count == 5)
         {
-            Debug.Log(trigger_count);
             news1.SetActive(false);
             news2.SetActive(false);
             news3.SetActive(false);
