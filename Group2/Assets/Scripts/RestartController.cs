@@ -6,10 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class RestartController : MonoBehaviour
 {
-    public void SwitchScene()
-    {    
-            FadeManager.Instance.LoadScene("awata", 0.5f);       
-    }
+    
    
     void Start()
     {
@@ -19,7 +16,10 @@ public class RestartController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButton(0)) 
+        {
+            FadeManager.Instance.LoadScene("yamaren", 0.5f);
+        }
     }
     
 }
