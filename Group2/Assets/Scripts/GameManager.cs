@@ -71,9 +71,7 @@ public class GameManager : MonoBehaviour
         if(YIndex == LAST_INDEX)
         {
             ScenariosPanel.SetActive(true);
-            Scenarios.text = "私「ここはどこ？・・・" 
-                           + "痛っ⁉頭ぶつけた・・・"
-                           + "排気口の中・・・？気味が悪いな・・・」";
+            Scenarios.text = "私「ここはどこ？・・・" ;
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
