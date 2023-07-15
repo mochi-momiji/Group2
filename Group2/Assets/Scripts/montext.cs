@@ -7,10 +7,13 @@ public class montext : MonoBehaviour
 {
     [SerializeField] UnityEngine.UI.Text textbox;
 
-
+    public AudioClip se;
+    AudioSource audioSource;
+    
     IEnumerator Start()
     {
-       
+        audioSource = GetComponent<AudioSource>();
+
         textbox.text = "私「ここは……病院？」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
@@ -56,7 +59,19 @@ public class montext : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        textbox.text = "今は忘れて、体調の回復に努めるとしよう…";
+        textbox.text = "・・・？";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        textbox.text = "鐘の音？";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        textbox.text = "近くにお寺はないはずだけど・・・";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        textbox.text = "まぁいいや。今は忘れて、体調の回復に努めるとしよう…";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 

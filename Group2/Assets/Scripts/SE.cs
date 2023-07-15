@@ -8,6 +8,7 @@ public class SE : MonoBehaviour
     public AudioClip sound1;//メッセージめくり音
     public AudioClip sound2;//寺の鐘
     AudioSource audioSource;
+    int counter = 0;
 
     void Start()
     {
@@ -22,6 +23,14 @@ public class SE : MonoBehaviour
         {
             //音(sound1)を鳴らす
             audioSource.PlayOneShot(sound1);
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            counter++;
+        }
+        if(counter== 11) 
+        {
+            audioSource.PlayOneShot(sound2);
         }
     }
 }
