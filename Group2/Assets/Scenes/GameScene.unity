@@ -3132,7 +3132,7 @@ MonoBehaviour:
   trigger6: {fileID: 211251761}
   event_item: {fileID: 564236980}
   NewsPaper: {fileID: 347379811}
-  CollisionSound: {fileID: 8300000, guid: 7398177202e6f504aaf48fca32077615, type: 3}
+  CollisionSound: {fileID: 8300000, guid: b93a3df67d924cb41b3d6e649582b8a1, type: 3}
   MoveSound: {fileID: 8300000, guid: 8bb2591de7e398e45818ab6a16bc38aa, type: 3}
   ItemSound: {fileID: 8300000, guid: 66200af2b3c4d03448546bcce5de07ac, type: 3}
   BloodSouund: {fileID: 8300000, guid: 9ee24a4600de8a448b41b352c01f091a, type: 3}
