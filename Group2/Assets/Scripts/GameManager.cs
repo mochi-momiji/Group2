@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
@@ -7,96 +7,89 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    //ƒvƒŒƒCƒ„[‹“_(Mein Camera)
+    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼è¦–ç‚¹(Mein Camera)
     public GameObject Screen;
-    //•\¦‚·‚éƒeƒLƒXƒg
+    //è¡¨ç¤ºã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆ
     public TMP_Text Scenarios;
-    //ƒeƒLƒXƒg‚ğ•\¦‚·‚éPunel
+    //ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹Punel
     public GameObject ScenariosPanel;
-    //ƒCƒ“ƒxƒ“ƒgƒŠ‚ğ•\¦‚·‚éPunel
+    //ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‚’è¡¨ç¤ºã™ã‚‹Punel
     public GameObject Inventry;
-    //ƒCƒxƒ“ƒg”­¶‚ÌƒgƒŠƒK[ƒAƒCƒeƒ€
-    public GameObject trigger1;     //ƒAƒCƒeƒ€1
-    public GameObject trigger2;     //ƒCƒxƒ“ƒg(–Ú)
-    public GameObject trigger3;     //ƒAƒCƒeƒ€2
-    public GameObject trigger4;     //ƒCƒxƒ“ƒg(’)
-    public GameObject trigger5;     //ƒAƒCƒeƒ€3
-    public GameObject trigger6;     //ƒCƒxƒ“ƒg(ƒ‚ƒ„)
-    public GameObject trigger7;     //ƒAƒCƒeƒ€4
-    public GameObject trigger8;     //ƒCƒxƒ“ƒg(Ú“G)
-    public GameObject trigger9;     //ƒAƒCƒeƒ€5
+    //ã‚¤ãƒ™ãƒ³ãƒˆç™ºç”Ÿã®ãƒˆãƒªã‚¬ãƒ¼ã‚¢ã‚¤ãƒ†ãƒ 
+    public GameObject trigger1;     //ã‚¢ã‚¤ãƒ†ãƒ 1
+    public GameObject trigger2;     //ã‚¤ãƒ™ãƒ³ãƒˆ(ç›®)
+    public GameObject trigger3;     //ã‚¢ã‚¤ãƒ†ãƒ 2/ã‚¤ãƒ™ãƒ³ãƒˆ(è™«)
+    public GameObject trigger4;     //ã‚¢ã‚¤ãƒ†ãƒ 3/ã‚¤ãƒ™ãƒ³ãƒˆ(ãƒ¢ãƒ¤)
+    public GameObject trigger5;     //ã‚¢ã‚¤ãƒ†ãƒ 4/ã‚¤ãƒ™ãƒ³ãƒˆ(æ¥æ•µ)
+    public GameObject trigger6;     //ã‚¢ã‚¤ãƒ†ãƒ 5/ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ã‚·ãƒ¼ãƒ³é·ç§»
 
-    //ƒCƒxƒ“ƒg‚É•\¦‚·‚éƒMƒ~ƒbƒN
-    public GameObject event_item;
+    //ã‚¤ãƒ™ãƒ³ãƒˆæ™‚ã«è¡¨ç¤ºã™ã‚‹ã‚®ãƒŸãƒƒã‚¯
+    public GameObject event_item;   //ã‚¤ãƒ™ãƒ³ãƒˆ(ç›®)æ™‚ã«è¡¨ç¤º
+    public GameObject NewsPaper;    //çœŸå®Ÿåˆ¤æ˜æ™‚ã«æ–°èã‚’è¡¨ç¤º
 
-    //g—pŒø‰Ê‰¹
-    public AudioClip MoveSound;      //ˆÚ“®‚ÌŒø‰Ê‰¹
-    public AudioClip ItemSound;      //ƒAƒCƒeƒ€æ“¾‚ÌŒø‰Ê‰¹
-    public AudioClip InsectSound1;    //’ƒCƒxƒ“ƒg‚ÌŒø‰Ê‰¹
-    public AudioClip InsectSound2;
-    public AudioClip EnemyVoice;     //Ú“GƒCƒxƒ“ƒg‚ÌŒø‰Ê‰¹
+    //ä½¿ç”¨åŠ¹æœéŸ³
+    public AudioClip MoveSound;       //ç§»å‹•æ™‚ã®åŠ¹æœéŸ³
+    public AudioClip ItemSound;       //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—æ™‚ã®åŠ¹æœéŸ³
+    public AudioClip InsectSound1;    //è™«ã‚¤ãƒ™ãƒ³ãƒˆæ™‚ã®åŠ¹æœéŸ³â‘ 
+    public AudioClip InsectSound2;    //è™«ã‚¤ãƒ™ãƒ³ãƒˆæ™‚ã®åŠ¹æœéŸ³â‘¡
+    public AudioClip EnemyVoice;      //æ¥æ•µã‚¤ãƒ™ãƒ³ãƒˆæ™‚ã®åŠ¹æœéŸ³
 
-    //Œø‰Ê‰¹‚ğo‚·ƒRƒ“ƒ|[ƒlƒ“ƒg
+    //åŠ¹æœéŸ³ã‚’å‡ºã™ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ
     AudioSource AudioSouce;
 
     const int FIRST_INDEX = 0;
+    const int LAST_INDEX = 7;
 
-    bool Move_Flag = false;             //ˆÚ“®ƒpƒ^[ƒ“‚ÌØ‚è‘Ö‚¦
-    bool Text_Flag = false;             //ƒeƒLƒXƒg•\¦Ø‚è‘Ö‚¦
-    float timer = 0.0f;                 //ˆÚ“®“®ìŠÔ
-    int RupeCount = 0;                      //px”z—ñ‚Ìƒ‹[ƒv‰ñ”
-    int event_num = 0;                  //I—¹‚µ‚½ƒCƒxƒ“ƒg
-    int XIndex = 0;                     //px”z—ñ‚ÌƒCƒ“ƒfƒbƒNƒX
-    int YIndex = 0;                     //py”z—ñ‚ÌƒCƒ“ƒfƒbƒNƒX
-    int[] px = { 0, 20, 40, 60 };       //ˆÚ“®”wŒi‚ÌØ‚è‘Ö‚¦ƒpƒ^[ƒ“
-    int[] py = { 0, -20, -40, -60, -80, -100, 
-        -120, -140, -160, -180, -200 ,20 };     //ŠeƒCƒxƒ“ƒgƒV[ƒ“ˆÊ’u
-    float pz = -10.0f;                  //ƒJƒƒ‰‚ÌZÀ•W
+    bool Move_Flag = false;             //ç§»å‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ã®åˆ‡ã‚Šæ›¿ãˆ
+    bool Text_Flag = false;             //ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤ºåˆ‡ã‚Šæ›¿ãˆ
+    float timer = 0.0f;                 //ç§»å‹•å‹•ä½œæ™‚é–“
+    int RupeCount = 0;                      //pxé…åˆ—ã®ãƒ«ãƒ¼ãƒ—å›æ•°
+    int event_num = 0;                  //çµ‚äº†ã—ãŸã‚¤ãƒ™ãƒ³ãƒˆ
+    int XIndex = 0;                     //pxé…åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+    int YIndex = 0;                     //pyé…åˆ—ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+    int[] px = { 0, 20, 40, 60 };       //ç§»å‹•èƒŒæ™¯ã®åˆ‡ã‚Šæ›¿ãˆãƒ‘ã‚¿ãƒ¼ãƒ³
+    int[] py = { 0, -20, -40, -60, -80, -100, -120, 20 };     //å„ã‚¤ãƒ™ãƒ³ãƒˆã‚·ãƒ¼ãƒ³ä½ç½®
+    float pz = -10.0f;                  //ã‚«ãƒ¡ãƒ©ã®Zåº§æ¨™
 
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        YIndex = PlayerPrefs.GetInt("YIndex", 11);
-        event_num = PlayerPrefs.GetInt("EventNum", 0);
+        YIndex = PlayerPrefs.GetInt("YIndex", LAST_INDEX);
+        event_num = PlayerPrefs.GetInt("EventNum", FIRST_INDEX);
         Move_Flag = true;
         Text_Flag = true;
+        NewsPaper.SetActive(false);
         event_item.SetActive(false);
         ScenariosPanel.SetActive(false);
         AudioSouce = GetComponent<AudioSource>();
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
 
-        //ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒV[ƒ“
-        if(YIndex == 11)
+        //ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ã‚·ãƒ¼ãƒ³
+        if(YIndex == LAST_INDEX)
         {
             ScenariosPanel.SetActive(true);
-            Scenarios.text = "ålŒöu‚±‚±‚Íc‚Ç‚±‚È‚ÌA–¼‘O‚Í...Šo‚¦‚Ä‚éBv";
+            Scenarios.text = "ç§ã€Œã“ã“ã¯ã©ã“ï¼Ÿãƒ»ãƒ»ãƒ»" 
+                           + "ç—›ã£â‰é ­ã¶ã¤ã‘ãŸãƒ»ãƒ»ãƒ»"
+                           + "æ’æ°—å£ã®ä¸­ãƒ»ãƒ»ãƒ»ï¼Ÿæ°—å‘³ãŒæ‚ªã„ãªãƒ»ãƒ»ãƒ»ã€";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "ålŒöu‚È‚ñ‚Å‚±‚ñ‚È‚Æ‚±‚ë‚É...v";
+            Scenarios.text = "ç§ã€Œã¨ã«ã‹ãå‡ºå£ã‚’æ¢ã•ãªã„ã¨ãƒ»ãƒ»ãƒ»ã€";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
-            Scenarios.text = "EEEE";
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            yield return null;
-
-            Scenarios.text = "ålŒöu‚Æ‚è‚ ‚¦‚¸i‚Ü‚È‚¢‚Æv";
-            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-            yield return null;
-
-            Scenarios.text = "‘€ìà–¾1\n"
-                           + "WƒL[:‘Oi\n"
-                           + "EscapeƒL[:ƒ|[ƒY‰æ–Ê\n"
-                           + "SpaceƒL[:ƒCƒ“ƒxƒ“ƒgƒŠ•\¦/BackSpace:•Â‚¶‚é";
+            Scenarios.text = "æ“ä½œèª¬æ˜1\n"
+                           + "Wã‚­ãƒ¼:å‰é€²\n"
+                           + "Escapeã‚­ãƒ¼:ãƒãƒ¼ã‚ºç”»é¢\n"
+                           + "Spaceã‚­ãƒ¼:ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªè¡¨ç¤º/BackSpace:é–‰ã˜ã‚‹";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
 
-            Scenarios.text = "‘€ìà–¾2\n"
-                           + "“¹’†AƒAƒCƒeƒ€‚ª—‚¿‚Ä‚¢‚é‚±‚Æ‚ª‚ ‚èA"
-                           + "ƒAƒCƒeƒ€‚ğƒNƒŠƒbƒN‚·‚é‚±‚Æ‚Åæ“¾‚Å‚«‚éB";
+            Scenarios.text = "æ“ä½œèª¬æ˜2\n"
+                           + "é“ä¸­ã€ã‚¢ã‚¤ãƒ†ãƒ ãŒè½ã¡ã¦ã„ã‚‹ã“ã¨ãŒã‚ã‚Šã€"
+                           + "ã‚¢ã‚¤ãƒ†ãƒ ã‚’ã‚¯ãƒªãƒƒã‚¯ã™ã‚‹ã“ã¨ã§å–å¾—ã§ãã‚‹ã€‚";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
 
@@ -109,7 +102,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //ƒ|[ƒY‰æ–Ê‚ÌˆÚ“®/ƒQ[ƒ€is‚Ì•Û‘¶
+        //ãƒãƒ¼ã‚ºç”»é¢ã®ç§»å‹•/ã‚²ãƒ¼ãƒ é€²è¡Œã®ä¿å­˜
         if (Input.GetKey(KeyCode.Escape))
         {
             PlayerPrefs.SetInt("XIndex", XIndex);
@@ -117,10 +110,10 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("EventNum", event_num);
             PlayerPrefs.Save();
 
-            SceneManager.LoadScene("mon.Pause2");//ƒ|[ƒY‰æ–Ê
+            SceneManager.LoadScene("mon.Pause2");//ãƒãƒ¼ã‚ºç”»é¢
         }
-        //ˆÚ“®ƒ‚[ƒVƒ‡ƒ“
-        //ƒZƒŠƒtEƒCƒ“ƒxƒ“ƒgƒŠ‚ğŠJ‚¢‚Ä‚È‚¢‚©‚ÂˆÚ“®ƒ‹[ƒv‚É–ß‚Á‚Ä‚¢‚é
+        //ç§»å‹•ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
+        //ã‚»ãƒªãƒ•ãƒ»ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªã‚’é–‹ã„ã¦ãªã„ã‹ã¤ç§»å‹•ãƒ«ãƒ¼ãƒ—ã«æˆ»ã£ã¦ã„ã‚‹
         if (ScenariosPanel.activeSelf == false && Inventry.activeSelf == false 
             && Screen.transform.position.y == py[FIRST_INDEX])
         {
@@ -138,7 +131,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        //ƒCƒxƒ“ƒg‚ÌƒeƒLƒXƒg•\¦
+        //ã‚¤ãƒ™ãƒ³ãƒˆæ™‚ã®ãƒ†ã‚­ã‚¹ãƒˆè¡¨ç¤º
         if (Text_Flag)
         {
             switch (Screen.transform.position.y)
@@ -170,25 +163,6 @@ public class GameManager : MonoBehaviour
 
                 case -120:
                     StartCoroutine(Senario6());
-                    Text_Flag = false;
-                    break;
-
-                case -140:
-                    StartCoroutine(Senario7());
-                    Text_Flag = false;
-                    break;
-
-                case -160:
-                    StartCoroutine(Senario8());
-                    Text_Flag = false;
-                    break;
-                case -180:
-                    StartCoroutine(Senario9());
-                    Text_Flag = false;
-                    break;
-
-                case -200:
-                    StartCoroutine(ClearGame());
                     Text_Flag = false;
                     break;
             }
@@ -224,11 +198,10 @@ public class GameManager : MonoBehaviour
                 event_num++;
                 Text_Flag = true;
             }
-            PlayerPrefs.SetInt("XIndex", XIndex);
-            PlayerPrefs.Save();
             PlayerPrefs.SetInt("YIndex", YIndex);
             PlayerPrefs.Save();
-
+            PlayerPrefs.SetInt("event_num", event_num);
+            PlayerPrefs.Save();
         }
         if (timer >= 1.0f)
         {
@@ -268,11 +241,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //ƒAƒCƒeƒ€æ“¾(1–‡–Ú)
+    //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—(1æšç›®)
     IEnumerator Senario1()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚È‚ñ‚¾‚ë‚¤...‚±‚ê..v\n";
+        Scenarios.text = "ç§ã€Œãªã‚“ã ã‚ã†...ã“ã‚Œ..ã€\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -283,16 +256,12 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚±‚ê‚ÍV•·‚Ì‹L–‚İ‚½‚¢‚¾‚¯‚ÇA"
-            @@@@@@+"‚È‚ñ‚Å‚±‚ñ‚È‚Æ‚±‚ë‚É‚ ‚é‚ñ‚¾‚ëv";
+        Scenarios.text = "æ–°èè¨˜äº‹ã®ç ´ç‰‡ãã®1ã‚’æ‰‹ã«å…¥ã‚ŒãŸã€‚";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚Æ‚è‚ ‚¦‚¸AE‚Á‚Ä‚¨‚±‚¤v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "V•·‹L–‚Ì”j•Ğ‚»‚Ì1‚ğè‚É“ü‚ê‚½B";
+        Scenarios.text = "ç§ã€Œãªã‚“ã ã‚ã†ã“ã‚Œãƒ»ãƒ»ãƒ»æ–°èï¼Ÿ\n"
+                       + "ãªã«ã‹æ›¸ã„ã¦ã‚ã‚‹ã‘ã©èª­ã‚ãªã„ã‚„ãƒ»ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -303,11 +272,11 @@ public class GameManager : MonoBehaviour
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
     }
 
-    //ƒCƒxƒ“ƒg(–Ú)
+    //ã‚¤ãƒ™ãƒ³ãƒˆ(ç›®)
     IEnumerator Senario2()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚Ü‚½†‚ª—‚¿‚Ä‚év";
+        Scenarios.text = "ç§ã€Œã¾ãŸç´™ãŒè½ã¡ã¦ã‚‹ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -322,7 +291,7 @@ public class GameManager : MonoBehaviour
 
         event_item.SetActive(false);
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöuƒ~ƒcƒPƒ^‚Á‚Ä‚Ç‚¤‚¢‚¤‚±‚Æ?v";
+        Scenarios.text = "ç§ã€ŒãƒŸãƒ„ã‚±ã‚¿ã£ã¦ã©ã†ã„ã†ã“ã¨?ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -332,11 +301,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu...‚¦‚Á...B‚ÈA‰½‚È‚Ì‚æ!!‚±‚ê...v";
+        Scenarios.text = "ç§ã€Œ...ãˆã£...ã€‚ãªã€ä½•ãªã®ã‚ˆ!!ã“ã‚Œ...ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚³‚Á‚«‚ÌŒ©‚Â‚¯‚½‚Á‚Ä...‚»‚ê‚É‚±‚Ì–Ú‚Ív";
+        Scenarios.text = "ç§ã€Œã•ã£ãã®è¦‹ã¤ã‘ãŸã£ã¦...ãã‚Œã«ã“ã®ç›®ã¯ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -347,7 +316,12 @@ public class GameManager : MonoBehaviour
 
         ScenariosPanel.SetActive(true);
 
-        Scenarios.text = "ålŒöu‚àAŒ³‚ÉA–ß‚Á‚½H...‰½‚¾‚Á‚½‚Ì‚æ...‚ ‚êv";
+        Scenarios.text = "ç§ã€Œã‚‚ã€å…ƒã«ã€æˆ»ã£ãŸï¼Ÿ...ä½•ã ã£ãŸã®ã‚ˆ...ä»Šã®ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ä¸»äººå…¬ã€Œå‹˜å¼ã—ã¦ã‚ˆãƒ»ãƒ»ãƒ»"
+                       + "æ—©ãå¸°ã‚ŠãŸã„ãƒ»ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -358,11 +332,11 @@ public class GameManager : MonoBehaviour
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
     }
 
-    //ƒAƒCƒeƒ€æ“¾(2–‡–Ú)
+    //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—(2æšç›®)ãƒ»ã‚¤ãƒ™ãƒ³ãƒˆ(è™«)
     IEnumerator Senario3()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚Ü‚½†‚ª—‚¿‚Ä‚é...v";
+        Scenarios.text = "ç§ã€Œã¾ãŸç´™ãŒè½ã¡ã¦ã‚‹...ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -373,11 +347,53 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚ÈA‰½‚à‹N‚±‚ç‚È‚¢H†‚Í...V•·‹L–‚Ì‘±‚«‚İ‚½‚¢‚Ëv";
+        Scenarios.text = "æ–°èè¨˜äº‹ã®ç ´ç‰‡ãã®2ã‚’æ‰‹ã«å…¥ã‚ŒãŸ\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text =  "V•·‹L–‚Ì”j•Ğ‚»‚Ì2‚ğè‚É“ü‚ê‚½\n";
+        Scenarios.text = "ç§ã€Œã“ã‚Œã§2ã¤ç›®ã ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã„ã£ãŸã„ä½•ã®è¨˜äº‹ãªã‚“ã ã‚ã†ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
+        AudioSouce.PlayOneShot(InsectSound1);
+        AudioSouce.PlayOneShot(InsectSound2);
+        yield return new WaitForSeconds(3.0f);
+
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "ç§ã€Œãªã«ã“ã®éŸ³ãƒ»ãƒ»ãƒ»ï¼Ÿã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
+        XIndex++;
+        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return new WaitForSeconds(1.0f);
+
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "ç§ã€Œã‚­ãƒ£ãƒ¼!!ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        XIndex++;
+        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        Scenarios.text = "ç§ã€Œã‚ã‚“ãªã«ãŸãã•ã‚“ã®è™«ã¨ã‹ãƒ ãƒª!!ã†ï½ãƒ»ãƒ»ãƒ»æ—©ãå¸°ã‚ŠãŸã„ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        XIndex -= 2;
+        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
+        yield return new WaitForSeconds(1.0f);
+
+        Scenarios.text = "ç§ã€Œãã€æ¶ˆãˆãŸ..ãªã‚“ãªã®ä¸€ä½“ãƒ»ãƒ»ãƒ»ã‚‚ã†å«Œã ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã¯ããƒ»ãƒ»ã¯ããƒ»ãƒ»ã¯ããƒ»ãƒ»ãªã‚“ã§ç§ãŒã“ã‚“ãªç›®ã«ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -388,12 +404,11 @@ public class GameManager : MonoBehaviour
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);   
     }
 
-
-    //ƒCƒxƒ“ƒg(’)
+    //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—(3æšç›®)ãƒ»ã‚¤ãƒ™ãƒ³ãƒˆ(ãƒ¢ãƒ¤ã®ä¸­ã«æ•µ)
     IEnumerator Senario4()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu...†‚ª‚Ü‚½—‚¿‚Ä‚éBv";
+        Scenarios.text = "ç§ã€Œç´™...å¤§ä¸ˆå¤«ã‹ãª...ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -404,63 +419,36 @@ public class GameManager : MonoBehaviour
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚µAV•·‹L–‚¶‚á‚È‚¢...v";
+        Scenarios.text = "ç§ã€Œã“ã‚Œã§3ã¤ç›®ãƒ»ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        AudioSouce.PlayOneShot(InsectSound1);
-        AudioSouce.PlayOneShot(InsectSound2);
-        Scenarios.text = "ålŒöuƒqƒBIA‚±A‚±‚Ì‰¹‚Í‚Á..v";
+        Scenarios.text = "æ–°èè¨˜äº‹ã®ç ´ç‰‡ãã®3ã‚’æ‰‹ã«å…¥ã‚ŒãŸ\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        ScenariosPanel.SetActive(false);
+        AudioSouce.PlayOneShot(EnemyVoice);
+        yield return new WaitForSeconds(3.0f);
+
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "ç§ã€Œãª..ä½•!ã“ã®å£°ã€‚\n"
+                       + "å¾Œã‚ã«èª°ã‹ã„ã‚‹ã®?ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = " \næŒ¯ã‚Šè¿”ã‚‹\n";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
         XIndex++;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "ålŒöuƒLƒƒ[!!v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex++;
-        Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "ålŒöu‚ ‚ñ‚È‚É‚½‚­‚³‚ñ‚Ì’‚Æ‚©ƒ€ƒŠ!!‚¤`...‘‚­‹A‚è‚½‚¢v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex -= 2;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
         yield return new WaitForSeconds(1.0f);
 
-        Scenarios.text = "ålŒöu‚«AÁ‚¦‚½B‚ÆA‚Æ‚É‚©‚­‘‚­’Eo‚µ‚æ‚¤v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex = FIRST_INDEX;
-        YIndex = FIRST_INDEX;
-
-        ScenariosPanel.SetActive(false);
-        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);
-    }
-
-    //ƒAƒCƒeƒ€æ“¾(3–‡–Ú)
-    IEnumerator Senario5()
-    {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu†...‘åä•v‚©‚È...v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        yield return new WaitUntil(() => trigger5.activeSelf == false);
-        yield return null;
-
-        AudioSouce.PlayOneShot(ItemSound);
-
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöuV•·‹L–...‚æ‚©‚Á‚½‚Ÿv";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "V•·‹L–‚Ì”j•Ğ‚»‚Ì3‚ğè‚É“ü‚ê‚½\n";
+        Scenarios.text = "ç§ã€Œãªã«ã“ã®ãƒ¢ãƒ¤...\n"
+                       + "ä¸æ°—å‘³ã ã—ã€æ—©ãé€²ã‚‚ã†ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
@@ -471,75 +459,65 @@ public class GameManager : MonoBehaviour
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);              
     }
 
-        //ƒCƒxƒ“ƒg(ƒ‚ƒ„’†‚É“G)
-    IEnumerator Senario6()
+    //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—(4æšç›®)ãƒ»ã‚¤ãƒ™ãƒ³ãƒˆ(ãƒ¢ãƒ¤ã‹ã‚‰æ•µãŒå‡ºã¦ãã‚‹)
+    IEnumerator Senario5()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu†‚ª—‚¿‚Ä‚é...v";
+        Scenarios.text = "ç§ã€Œãã€‚æ¶ˆãˆãŸ?ãƒ»ãƒ»ãƒ»ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã†ã‚“ãƒ»ãƒ»ãƒ»ä»Šåº¦ã‚‚è½ã¡ã¦ã‚‹ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œè„±å‡ºã®ãƒ’ãƒ³ãƒˆã«ãªã‚‹ã‹ã‚‚ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã“ã‚Œã§4ã¤ç›®ã€ã‚‚ã†å°‘ã—ã§èª­ã‚ãã†ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        yield return new WaitUntil(() => trigger6.activeSelf == false);
+        yield return new WaitUntil(() => trigger5.activeSelf == false);
         yield return null;
-
-        AudioSouce.PlayOneShot(EnemyVoice);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚È..‰½!‚±‚ÌºB\n" 
-                       + "Œã‚ë‚É’N‚©‚¢‚é‚Ì?v";
+        AudioSouce.PlayOneShot(ItemSound);
+        Scenarios.text = "æ–°èè¨˜äº‹ã®ç ´ç‰‡ãã®4ã‚’æ‰‹ã«å…¥ã‚ŒãŸ\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = " \nU‚è•Ô‚é\n";
+        ScenariosPanel.SetActive(false);
+        AudioSouce.PlayOneShot(EnemyVoice);
+        yield return new WaitForSeconds(3.0f);
+
+        ScenariosPanel.SetActive(true);
+        Scenarios.text = "ç§ã€Œã“ã®å£°ã¯ãƒ»ãƒ»ãƒ»ã¾ã•ã‹!";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        Scenarios.text = "\n"
+                       + " æŒ¯ã‚Šè¿”ã‚‹\n"
+                       + "";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        ScenariosPanel.SetActive(false);
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "ålŒöu‚È‚É‚±‚Ìƒ‚ƒ„...‚¤‚ñ?\n" 
-                       + "...‰œ‚É‰½‚©‚¢‚é!!“¦‚°‚È‚¢‚Æ!v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex = FIRST_INDEX;
-        YIndex = FIRST_INDEX;
-
-        ScenariosPanel.SetActive(false);
-        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);   
-    }
-
-    //ƒAƒCƒeƒ€æ“¾(4–‡–Ú)
-    IEnumerator Senario7()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚±‚ñ‚È‚É‚Ü‚½—‚¿‚Ä‚é!v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "ålŒöu‹L–‚È‚ç’Eo‚Ìƒqƒ“ƒg‚É‚È‚é‚©‚àBv";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        yield return new WaitUntil(() => trigger7.activeSelf == false);
-        yield return null;
-
-        AudioSouce.PlayOneShot(ItemSound);
+        yield return new WaitForSeconds(2.0f);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚à‚¤­‚µ‚Å“Ç‚ß‚»‚¤A’Eo‚Ìƒqƒ“ƒg‚É‚È‚é‚Æ‚¢‚¢‚¯‚Çv";
+        Scenarios.text = "ç§ã€Œä½•ã‚¢ã‚¤ãƒ„ãƒ»ãƒ»ãƒ»"
+                       + "æ•ã¾ã£ãŸã‚‰ãƒ¤ãƒã‚¤!ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚Æ‚É‚©‚­“¦‚°‚æ‚¤!v";
+        Scenarios.text = "ç§ã€Œã¨ã«ã‹ãé€ƒã’ãªã„ã¨ãƒ»ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
-
-        Scenarios.text = "V•·‹L–‚Ì”j•Ğ‚»‚Ì4‚ğè‚É“ü‚ê‚½\n";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
 
         XIndex = FIRST_INDEX;
         YIndex = FIRST_INDEX;
@@ -547,126 +525,82 @@ public class GameManager : MonoBehaviour
         Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);           
     }
 
-    //ƒCƒxƒ“ƒg(ƒ‚ƒ„‚©‚ç“G‚ªo‚Ä‚­‚é)
-    IEnumerator Senario8()
+    //ã‚¢ã‚¤ãƒ†ãƒ å–å¾—(5æšç›®)ãƒ»ã‚¤ãƒ™ãƒ³ãƒˆ(çœŸå®Ÿã®åˆ¤æ˜)=>ã‚¯ãƒªã‚¢ã‚¤ãƒ™ãƒ³ãƒˆ
+    IEnumerator Senario6()
     {
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu†‚ª...—‚¿‚Ä‚é..v\n";
+        Scenarios.text = "ç§ã€Œé€ƒã’åˆ‡ã‚ŒãŸ?\nã‚‚ã†ã„ãªã„ã‚ˆã­ï¼Ÿãƒ»ãƒ»ãƒ»ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œç´™ãŒè½ã¡ã¦ã‚‹ã€‚ã€\n";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         ScenariosPanel.SetActive(false);
-        yield return new WaitUntil(() => trigger8.activeSelf == false);
+        yield return new WaitUntil(() => trigger6.activeSelf == false);
         yield return null;
 
         AudioSouce.PlayOneShot(ItemSound);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "\n"
-                       + " U‚è•Ô‚é\n"
-                       + "";
+        Scenarios.text = "ç§ã€Œã‚„ã£ã¨ãã‚ã£ãŸ!è¦‹ã¦ã¿ã‚ˆã†ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        Scenarios.text = "\n"
+                       + "æ–°èè¨˜äº‹ã‚’æ‰‹ã«å…¥ã‚ŒãŸ";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        NewsPaper.SetActive(true);
+        Scenarios.text = "ç§ã€Œã“ã‚Œã¯ã€äº¤é€šäº‹æ•…ã®è¨˜äº‹...?ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã©ã†ã—ã¦ãƒ»ãƒ»ãƒ»\n"
+                       + "äº‹æ•…ã‚’èµ·ã“ã—ãŸã®ãƒ»ãƒ»ãƒ»ç§(è¥¿æ‘å½©æµ·)ã®åå‰ãŒãƒ»ãƒ»ãƒ»ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã“ã®ã‚¯ãƒ­ãƒ¼ãƒãƒ¼ã®é«ªé£¾ã‚Šãƒ»ãƒ»ãƒ»ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        Scenarios.text = "ç§ã€Œã‚‚ã—ã‹ã—ã¦ã€ã‚¢ã‚¤ãƒ„ã¯ç§ãŒè½¢ã„ãŸå¥³ã®å­!?ã€";
+        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+        yield return null;
+
+        NewsPaper.SetActive(false);
+        ScenariosPanel.SetActive(false);
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
-        Scenarios.text = "ålŒöu‚³‚Á‚«‚æ‚è‚ ‚¢‚Â‚ª‹ß‚Ã‚¢‚Ä‚é!\n" 
-                       + "‚³‚Á‚«‚æ‚è‚ ‚¢‚Â‚ª‹ß‚Ã‚¢‚Ä‚é!\n"
-                       + "‘‚­“¦‚°‚È‚¢‚Æv";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex = FIRST_INDEX;
-        YIndex = FIRST_INDEX;
-
-        ScenariosPanel.SetActive(false);
-        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);  
-    }
-
-        //ƒAƒCƒeƒ€æ“¾(5–‡–Ú)
-    IEnumerator Senario9()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚Ü‚¾A†‚ª—‚¿‚Ä‚éBv\n";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(false);
-        yield return new WaitUntil(() => trigger9.activeSelf == false);
-        yield return null;
-
-        AudioSouce.PlayOneShot(ItemSound);
+        yield return new WaitForSeconds(2.0f);
 
         ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚â‚Á‚Æ‚»‚ë‚Á‚½!\n"
-                       + "Œ©‚Ä‚İ‚æ‚¤v";
+        Scenarios.text = "ç§ã€Œãˆã£...ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚±‚ê‚ÍAŒğ’Ê–ŒÌ‚Ì‹L–...?v";
+        Scenarios.text = "ç§ã€Œã‚¢ã‚¤ãƒ„ã€ã‚¯ãƒ­ãƒ¼ãƒãƒ¼ãŒä»˜ã„ã¦ã‚‹!\n"
+                       + "ã¨ã„ã†ã“ã¨ã¯ã‚„ã£ã±ã‚Šãƒ»ãƒ»ãƒ»ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu..‚¦‚Á...\n"
-                       + "–ŒÌ‚ğ‹N‚±‚µ‚½‚Ì...„..v";
+        Scenarios.text = "å¤è³€ åƒå°‹??ã€Œãƒ„ã‚«ãƒã‚¨ã‚¿...ãƒ‹ã‚¬ã‚µãƒŠã‚¤ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚±‚Ìq‚Ì”¯ü‚è..‚ ‚¢‚Â‚à‚Â‚¯‚Ä‚½B..\n"
-                       + "‚à‚µ‚©‚µ‚ÄA‚ ‚¢‚Â‚Í„‚ªç€‚¢‚½—‚Ìq!?p";
+        Scenarios.text = "ç§ã€Œã”ã‚ã‚“ãªã•ã„ã”ã‚ã‚“ãªã•ã„ã”ã‚ã‚“ãªã•ã„" +
+            "ã”ã‚ã‚“ãªã•ã„ã”ã‚ã‚“ãªã•ã„ã”ã‚ã‚“ãªã•ã„ã”ã‚ã‚“ãªã•ã„ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
-        Scenarios.text = "ålŒöu‚Í‚ÁA‘¬‚­“¦‚°‚È‚¢‚Æ!!\n"
-                       + "•ß‚Ü‚Á‚½‚çE‚³‚ê‚é!v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "\n"
-                       + "V•·‹L–‚ğè‚É“ü‚ê‚½";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        XIndex = FIRST_INDEX;
-        YIndex = FIRST_INDEX;
-
-        ScenariosPanel.SetActive(false);
-        Screen.transform.position = new Vector3(px[FIRST_INDEX], py[FIRST_INDEX], pz);   
-    }
-
-        //ƒNƒŠƒAƒCƒxƒ“ƒg
-    IEnumerator ClearGame()
-    {
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu“¦‚°Ø‚ê‚½?...v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        ScenariosPanel.SetActive(true);
-        Scenarios.text = "ålŒöu‚¦‚Á...v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-
-        Scenarios.text = "ŒÃ‰ê çq??uƒcƒJƒ}ƒGƒ^...ƒjƒKƒTƒiƒCv";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "ålŒöu‚¢‚â[!!v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "ålŒöu‚²‚ß‚ñ‚È‚³‚¢‚²‚ß‚ñ‚È‚³‚¢‚²‚ß‚ñ‚È‚³‚¢" +
-            "‚²‚ß‚ñ‚È‚³‚¢‚²‚ß‚ñ‚È‚³‚¢‚²‚ß‚ñ‚È‚³‚¢‚²‚ß‚ñ‚È‚³‚¢v";
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-        yield return null;
-
-        Scenarios.text = "ŒÃ‰ê çq??uƒ[ƒbƒ^ƒCƒj!,,ƒ†ƒ‹ƒTƒiƒC!!v";
+        Scenarios.text = "å¤è³€ åƒå°‹??ã€Œã‚¼ãƒƒã‚¿ã‚¤ãƒ‹!,,ãƒ¦ãƒ«ã‚µãƒŠã‚¤!!ã€";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
         PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("mon.hospital");
-    }
-    
+    }    
 }
