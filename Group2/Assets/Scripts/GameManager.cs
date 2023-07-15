@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
             AudioSouce.PlayOneShot(CollisionSound);
             yield return new WaitForSeconds(1.0f); 
 
-            Scenarios.text = "私「痛っ⁉頭ぶつけた・・・"
+            Scenarios.text = "私「痛っ!?頭ぶつけた・・・"
                            + "排気口の中・・・？気味が悪いな・・・」";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
