@@ -28,8 +28,10 @@ public class GameManager : MonoBehaviour
     public GameObject NewsPaper;    //真実判明時に新聞を表示
 
     //使用効果音
+    public AudioClip CollisionSound;  //プロローグ:頭をぶつける音
     public AudioClip MoveSound;       //移動時の効果音
     public AudioClip ItemSound;       //アイテム取得時の効果音
+    public AudioClip BloodSouund;     //イベント(目)の演出効果音
     public AudioClip InsectSound1;    //虫イベント時の効果音①
     public AudioClip InsectSound2;    //虫イベント時の効果音②
     public AudioClip EnemyVoice;      //接敵イベント時の効果音
@@ -71,6 +73,14 @@ public class GameManager : MonoBehaviour
             ScenariosPanel.SetActive(true);
             Scenarios.text = "私「ここはどこ？・・・" 
                            + "痛っ⁉頭ぶつけた・・・"
+                           + "排気口の中・・・？気味が悪いな・・・」";
+            yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
+            yield return null;
+
+            AudioSouce.PlayOneShot(CollisionSound);
+            yield return new WaitForSeconds(1.0f); 
+
+            Scenarios.text = "私「痛っ⁉頭ぶつけた・・・"
                            + "排気口の中・・・？気味が悪いな・・・」";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             yield return null;
@@ -286,6 +296,7 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         AudioSouce.PlayOneShot(ItemSound);
+        AudioSouce.PlayOneShot(BloodSouund);
         event_item.SetActive(true);
         yield return new WaitForSeconds(1.0f);
 
@@ -601,6 +612,6 @@ public class GameManager : MonoBehaviour
         yield return null;
 
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene("mon.hospital");
+        FadeManager.Instance.LoadScene("mon.hospital", 1.0f);
     }    
 }
