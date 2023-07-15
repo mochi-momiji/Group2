@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sound1: {fileID: 8300000, guid: 22c3fe066af3d2a40b706da5e3739b5a, type: 3}
-  sound2: {fileID: 0}
+  sound2: {fileID: 8300000, guid: 3fd806a319c605046bf589931ca073db, type: 3}
 --- !u!4 &441175636
 Transform:
   m_ObjectHideFlags: 0
@@ -448,6 +448,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textbox: {fileID: 2067450333}
+  se: {fileID: 0}
 --- !u!1001 &1423850883
 PrefabInstance:
   m_ObjectHideFlags: 0
