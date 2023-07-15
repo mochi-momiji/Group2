@@ -504,7 +504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u632F\u308A\u5411\u304F"
+  m_text: "\u6301\u3061\u7269"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6f152f6754e376240beec4cbf922fb90, type: 2}
   m_sharedMaterial: {fileID: 2354567573378384941, guid: 6f152f6754e376240beec4cbf922fb90, type: 2}
@@ -1330,7 +1330,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Buck
+  m_text: Back
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 868ea85e20635b04ba517a5325266b85, type: 2}
   m_sharedMaterial: {fileID: 9071101054999402297, guid: 868ea85e20635b04ba517a5325266b85, type: 2}
