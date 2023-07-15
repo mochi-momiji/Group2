@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.DeleteAll();
         }
 
-        if(YIndex < 11 && YIndex >= 6)
+        if(YIndex < 7 && YIndex >= 4)
         {
             Move_Flag = false;
         }
