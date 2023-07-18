@@ -90,7 +90,7 @@ public class GameManager : MonoBehaviour
             yield return null;
 
             Scenarios.text = "操作説明1\n"
-                           + "Wキー:前進\n"
+                           + "Wキー:前進 "
                            + "Escapeキー:ポーズ画面\n"
                            + "Spaceキー:インベントリ表示/BackSpace:閉じる";
             yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
