@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
     public AudioClip MoveSound;       //移動時の効果音
     public AudioClip ItemSound;       //アイテム取得時の効果音
     public AudioClip BloodSouund;     //イベント(目)の演出効果音
+    public AudioClip AppearanceSound; //イベント背景出現効果音
+    public AudioClip DisappearanceSound;　 //イベント背景消滅効果音
     public AudioClip InsectSound1;    //虫イベント時の効果音①
     public AudioClip InsectSound2;    //虫イベント時の効果音②
     public AudioClip EnemyVoice;      //接敵イベント時の効果音
@@ -304,6 +306,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        AudioSouce.PlayOneShot(AppearanceSound);
         ScenariosPanel.SetActive(false);
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
@@ -318,6 +321,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        AudioSouce.PlayOneShot(DisappearanceSound);
         ScenariosPanel.SetActive(false);
         XIndex--;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
@@ -388,12 +392,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        AudioSouce.PlayOneShot(DisappearanceSound);
         XIndex++;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
         Scenarios.text = "私「あんなにたくさんの虫とかムリ!!う～・・・早く帰りたい」";
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
         yield return null;
 
+        AudioSouce.PlayOneShot(DisappearanceSound);
         XIndex -= 2;
         Screen.transform.position = new Vector3(px[XIndex], py[YIndex], pz);
         yield return new WaitForSeconds(1.0f);
