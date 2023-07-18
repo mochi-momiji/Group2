@@ -210,7 +210,7 @@ public class GameManager : MonoBehaviour
             }
             PlayerPrefs.SetInt("YIndex", YIndex);
             PlayerPrefs.Save();
-            PlayerPrefs.SetInt("event_num", event_num);
+            PlayerPrefs.SetInt("EventNum", event_num);
             PlayerPrefs.Save();
         }
         if (timer >= 1.0f)
@@ -239,7 +239,7 @@ public class GameManager : MonoBehaviour
                 event_num++;
                 Text_Flag = true;
             }
-            PlayerPrefs.SetInt("XIndex", XIndex);
+            PlayerPrefs.SetInt("EventNum", event_num);
             PlayerPrefs.Save();
             PlayerPrefs.SetInt("YIndex", YIndex);
             PlayerPrefs.Save();
